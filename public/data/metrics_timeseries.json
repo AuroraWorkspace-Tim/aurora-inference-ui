@@ -1,0 +1,242 @@
+[
+  {
+    "date": "2026-07-05",
+    "requests": 45000,
+    "tokens_in": 18900000,
+    "tokens_out": 12600000,
+    "spend_usd": 8.82,
+    "errors": 90
+  },
+  {
+    "date": "2026-07-06",
+    "requests": 51011,
+    "tokens_in": 21424620,
+    "tokens_out": 14283080,
+    "spend_usd": 10.0,
+    "errors": 102
+  },
+  {
+    "date": "2026-07-07",
+    "requests": 56324,
+    "tokens_in": 23656080,
+    "tokens_out": 15770720,
+    "spend_usd": 11.04,
+    "errors": 112
+  },
+  {
+    "date": "2026-07-08",
+    "requests": 60173,
+    "tokens_in": 25272660,
+    "tokens_out": 16848440,
+    "spend_usd": 11.79,
+    "errors": 120
+  },
+  {
+    "date": "2026-07-09",
+    "requests": 62003,
+    "tokens_in": 26041260,
+    "tokens_out": 17360840,
+    "spend_usd": 12.15,
+    "errors": 124
+  },
+  {
+    "date": "2026-07-10",
+    "requests": 61571,
+    "tokens_in": 25859820,
+    "tokens_out": 17239880,
+    "spend_usd": 12.07,
+    "errors": 123
+  },
+  {
+    "date": "2026-07-11",
+    "requests": 58989,
+    "tokens_in": 24775380,
+    "tokens_out": 16516920,
+    "spend_usd": 11.56,
+    "errors": 117
+  },
+  {
+    "date": "2026-07-12",
+    "requests": 54722,
+    "tokens_in": 22983240,
+    "tokens_out": 15322160,
+    "spend_usd": 10.73,
+    "errors": 109
+  },
+  {
+    "date": "2026-07-13",
+    "requests": 49517,
+    "tokens_in": 20797140,
+    "tokens_out": 13864760,
+    "spend_usd": 9.71,
+    "errors": 99
+  },
+  {
+    "date": "2026-07-14",
+    "requests": 44294,
+    "tokens_in": 18603480,
+    "tokens_out": 12402320,
+    "spend_usd": 8.68,
+    "errors": 88
+  },
+  {
+    "date": "2026-07-15",
+    "requests": 40000,
+    "tokens_in": 16800000,
+    "tokens_out": 11200000,
+    "spend_usd": 7.84,
+    "errors": 80
+  },
+  {
+    "date": "2026-07-16",
+    "requests": 37458,
+    "tokens_in": 15732360,
+    "tokens_out": 10488240,
+    "spend_usd": 7.34,
+    "errors": 74
+  },
+  {
+    "date": "2026-07-17",
+    "requests": 37231,
+    "tokens_in": 15637020,
+    "tokens_out": 10424680,
+    "spend_usd": 7.3,
+    "errors": 74
+  },
+  {
+    "date": "2026-07-18",
+    "requests": 39522,
+    "tokens_in": 16599240,
+    "tokens_out": 11066160,
+    "spend_usd": 7.75,
+    "errors": 79
+  },
+  {
+    "date": "2026-07-19",
+    "requests": 44138,
+    "tokens_in": 18537960,
+    "tokens_out": 12358640,
+    "spend_usd": 8.65,
+    "errors": 88
+  },
+  {
+    "date": "2026-07-20",
+    "requests": 50504,
+    "tokens_in": 21211680,
+    "tokens_out": 14141120,
+    "spend_usd": 9.9,
+    "errors": 101
+  },
+  {
+    "date": "2026-07-21",
+    "requests": 57751,
+    "tokens_in": 24255420,
+    "tokens_out": 16170280,
+    "spend_usd": 11.32,
+    "errors": 115
+  },
+  {
+    "date": "2026-07-22",
+    "requests": 64846,
+    "tokens_in": 27235320,
+    "tokens_out": 18156880,
+    "spend_usd": 12.71,
+    "errors": 129
+  },
+  {
+    "date": "2026-07-23",
+    "requests": 70757,
+    "tokens_in": 29717940,
+    "tokens_out": 19811960,
+    "spend_usd": 13.87,
+    "errors": 141
+  },
+  {
+    "date": "2026-07-24",
+    "requests": 74615,
+    "tokens_in": 31338300,
+    "tokens_out": 20892200,
+    "spend_usd": 14.62,
+    "errors": 149
+  },
+  {
+    "date": "2026-07-25",
+    "requests": 75863,
+    "tokens_in": 31862460,
+    "tokens_out": 21241640,
+    "spend_usd": 14.87,
+    "errors": 151
+  },
+  {
+    "date": "2026-07-26",
+    "requests": 74346,
+    "tokens_in": 31225320,
+    "tokens_out": 20816880,
+    "spend_usd": 14.57,
+    "errors": 148
+  },
+  {
+    "date": "2026-07-27",
+    "requests": 70352,
+    "tokens_in": 29547840,
+    "tokens_out": 19698560,
+    "spend_usd": 13.79,
+    "errors": 140
+  },
+  {
+    "date": "2026-07-28",
+    "requests": 64572,
+    "tokens_in": 27120240,
+    "tokens_out": 18080160,
+    "spend_usd": 12.66,
+    "errors": 129
+  },
+  {
+    "date": "2026-07-29",
+    "requests": 57999,
+    "tokens_in": 24359580,
+    "tokens_out": 16239720,
+    "spend_usd": 11.37,
+    "errors": 115
+  },
+  {
+    "date": "2026-07-30",
+    "requests": 51776,
+    "tokens_in": 21745920,
+    "tokens_out": 14497280,
+    "spend_usd": 10.15,
+    "errors": 103
+  },
+  {
+    "date": "2026-07-31",
+    "requests": 47015,
+    "tokens_in": 19746300,
+    "tokens_out": 13164200,
+    "spend_usd": 9.21,
+    "errors": 94
+  },
+  {
+    "date": "2026-08-01",
+    "requests": 44619,
+    "tokens_in": 18739980,
+    "tokens_out": 12493320,
+    "spend_usd": 8.75,
+    "errors": 89
+  },
+  {
+    "date": "2026-08-02",
+    "requests": 45129,
+    "tokens_in": 18954180,
+    "tokens_out": 12636120,
+    "spend_usd": 8.85,
+    "errors": 90
+  },
+  {
+    "date": "2026-08-03",
+    "requests": 48634,
+    "tokens_in": 20426280,
+    "tokens_out": 13617520,
+    "spend_usd": 9.53,
+    "errors": 97
+  }
+]

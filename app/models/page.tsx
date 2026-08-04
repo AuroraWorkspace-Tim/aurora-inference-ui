@@ -1,0 +1,100 @@
+"use client";
+import { useState } from "react";
+import models from "@/public/data/models.json";
+
+const MODALITIES = ["all", "text", "code", "image", "audio", "video"];
+
+const modalityColor: Record<string, string> = {
+  text: "bg-blue-900/40 text-blue-400 border-blue-800",
+  code: "bg-violet-900/40 text-violet-400 border-violet-800",
+  image: "bg-pink-900/40 text-pink-400 border-pink-800",
+  audio: "bg-amber-900/40 text-amber-400 border-amber-800",
+  video: "bg-emerald-900/40 text-emerald-400 border-emerald-800",
+};
+
+export default function ModelsPage() {
+  const [filter, setFilter] = useState("all");
+  const [selected, setSelected] = useState<typeof models[0] | null>(null);
+
+  const filtered = filter === "all" ? models : models.filter((m) => m.modality === filter);
+
+  const snippet = (m: typeof models[0]) => `import openai
+
+client = openai.OpenAI(
+    base_url="https://ai.aur.lu/v1",
+    api_key="YOUR_AURORA_KEY",
+)
+
+response = client.chat.completions.create(
+    model="${m.id}",
+    messages=[{"role": "user", "content": "Hello!"}],
+)
+print(response.choices[0].message.content)`;
+
+  return (
+    <div className="p-6 space-y-6">
+      <div>
+        <h1 className="text-2xl font-bold text-white">Model Catalog</h1>
+        <p className="text-gray-400 text-sm mt-1">{models.length} models available</p>
+      </div>
+
+      {/* Filter tabs */}
+      <div className="flex gap-2">
+        {MODALITIES.map((m) => (
+          <button
+            key={m}
+            onClick={() => setFilter(m)}
+            className={`px-3 py-1.5 text-sm rounded-lg capitalize transition-colors ${
+              filter === m
+                ? "bg-violet-600 text-white"
+                : "bg-gray-800 text-gray-400 hover:text-gray-200"
+            }`}
+          >
+            {m}
+          </button>
+        ))}
+      </div>
+
+      <div className="grid grid-cols-3 gap-4">
+        {filtered.map((m) => (
+          <div
+            key={m.id}
+            onClick={() => setSelected(selected?.id === m.id ? null : m)}
+            className={`bg-gray-900 border rounded-xl p-4 cursor-pointer transition-colors ${
+              selected?.id === m.id ? "border-violet-600" : "border-gray-800 hover:border-gray-700"
+            }`}
+          >
+            <div className="flex items-start justify-between mb-2">
+              <div>
+                <div className="font-medium text-white text-sm">{m.name}</div>
+                <div className="text-xs text-gray-500 mt-0.5">{m.provider}</div>
+              </div>
+              <span className={`text-xs px-2 py-0.5 rounded border capitalize ${modalityColor[m.modality]}`}>
+                {m.modality}
+              </span>
+            </div>
+            <p className="text-xs text-gray-400 line-clamp-2">{m.description}</p>
+            <div className="mt-3 flex items-center gap-3 text-xs text-gray-500">
+              {m.context_length > 0 && <span>{(m.context_length / 1000).toFixed(0)}k ctx</span>}
+              <span>${m.price_per_1k_input.toFixed(5)}/1k in</span>
+            </div>
+            <div className="mt-2 flex flex-wrap gap-1">
+              {m.tags.map((t) => (
+                <span key={t} className="text-xs bg-gray-800 text-gray-400 px-1.5 py-0.5 rounded">{t}</span>
+              ))}
+            </div>
+
+            {selected?.id === m.id && (
+              <div className="mt-3 pt-3 border-t border-gray-800">
+                <div className="text-xs text-gray-500 mb-1.5">Python</div>
+                <pre className="bg-gray-950 rounded-lg p-3 text-xs text-gray-300 overflow-x-auto whitespace-pre-wrap font-mono">
+                  {snippet(m)}
+                </pre>
+              </div>
+            )}
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}

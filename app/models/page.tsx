@@ -40,31 +40,7 @@ const modalityColor: Record<string, string> = {
   video: "bg-emerald-900/40 text-emerald-400 border-emerald-800",
 };
 
-export default function ModelsPage() {
-  const [models, setModels] = useState<Model[]>(staticModels as Model[]);
-  const [loading, setLoading] = useState(true);
-  const [filter, setFilter] = useState("all");
-  const [selected, setSelected] = useState<Model | null>(null);
-
-  useEffect(() => {
-    fetch("/api/v1/models")
-      .then((r) => r.json())
-      .then((json) => {
-        // OpenAI-compatible list response: { data: [...] }
-        const raw: { id: string; owned_by?: string }[] = json.data ?? [];
-        if (raw.length === 0) return; // keep static fallback
-
-        const staticById = Object.fromEntries(staticModels.map((m) => [m.id, m]));
-        const merged = raw.map((m) => staticById[m.id] ?? inferMetadata(m));
-        setModels(merged as Model[]);
-      })
-      .catch(() => {/* keep static fallback */})
-      .finally(() => setLoading(false));
-  }, []);
-
-  const filtered = filter === "all" ? models : models.filter((m) => m.modality === filter);
-
-  const snippet = (m: Model) => `import openai
+const snippet = (m: Model) => `import openai
 
 client = openai.OpenAI(
     base_url="https://ai.aur.lu/v1",
@@ -77,6 +53,32 @@ response = client.chat.completions.create(
 )
 print(response.choices[0].message.content)`;
 
+export default function ModelsPage() {
+  const [models, setModels] = useState<Model[]>(staticModels as Model[]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(false);
+  const [filter, setFilter] = useState("all");
+  const [selected, setSelected] = useState<Model | null>(null);
+
+  function loadModels() {
+    setError(false);
+    setLoading(true);
+    fetch("/api/models")
+      .then((r) => r.json())
+      .then((data: Model[]) => {
+        if (data.length === 0) return; // keep static fallback
+        const staticById = Object.fromEntries(staticModels.map((m) => [m.id, m]));
+        const merged = data.map((m) => staticById[m.id] ?? inferMetadata(m));
+        setModels(merged as Model[]);
+      })
+      .catch(() => setError(true))
+      .finally(() => setLoading(false));
+  }
+
+  useEffect(() => { loadModels(); }, []); // eslint-disable-line react-hooks/exhaustive-deps
+
+  const filtered = filter === "all" ? models : models.filter((m) => m.modality === filter);
+
   return (
     <div className="p-6 space-y-6">
       <div>
@@ -86,7 +88,13 @@ print(response.choices[0].message.content)`;
         </p>
       </div>
 
-      {/* Filter tabs */}
+      {error && (
+        <div className="rounded-xl border border-red-800 bg-red-900/20 px-4 py-3 text-sm text-red-400">
+          Failed to load live model catalog — showing cached data.{" "}
+          <button className="underline" onClick={loadModels}>Retry</button>
+        </div>
+      )}
+
       <div className="flex gap-2">
         {MODALITIES.map((m) => (
           <button
@@ -103,52 +111,61 @@ print(response.choices[0].message.content)`;
         ))}
       </div>
 
-      <div className="grid grid-cols-3 gap-4">
-        {filtered.map((m) => (
-          <div
-            key={m.id}
-            onClick={() => setSelected(selected?.id === m.id ? null : m)}
-            className={`bg-gray-900 border rounded-xl p-4 cursor-pointer transition-colors ${
-              selected?.id === m.id ? "border-violet-600" : "border-gray-800 hover:border-gray-700"
-            }`}
-          >
-            <div className="flex items-start justify-between mb-2">
-              <div>
-                <div className="font-medium text-white text-sm">{m.name || m.id}</div>
-                <div className="text-xs text-gray-500 mt-0.5">{m.provider}</div>
+      {loading ? (
+        <div className="grid grid-cols-3 gap-4">
+          {Array.from({ length: 6 }).map((_, i) => (
+            <div key={i} className="bg-gray-900 border border-gray-800 rounded-xl p-4 animate-pulse h-32" />
+          ))}
+        </div>
+      ) : (
+        <div className="grid grid-cols-3 gap-4">
+          {filtered.map((m) => (
+            <button
+              key={m.id}
+              type="button"
+              onClick={() => setSelected(selected?.id === m.id ? null : m)}
+              className={`bg-gray-900 border rounded-xl p-4 transition-colors text-left w-full ${
+                selected?.id === m.id ? "border-violet-600" : "border-gray-800 hover:border-gray-700"
+              }`}
+            >
+              <div className="flex items-start justify-between mb-2">
+                <div>
+                  <div className="font-medium text-white text-sm">{m.name || m.id}</div>
+                  <div className="text-xs text-gray-500 mt-0.5">{m.provider}</div>
+                </div>
+                {m.modality && (
+                  <span className={`text-xs px-2 py-0.5 rounded border capitalize ${modalityColor[m.modality] ?? "bg-gray-800 text-gray-400 border-gray-700"}`}>
+                    {m.modality}
+                  </span>
+                )}
               </div>
-              {m.modality && (
-                <span className={`text-xs px-2 py-0.5 rounded border capitalize ${modalityColor[m.modality] ?? "bg-gray-800 text-gray-400 border-gray-700"}`}>
-                  {m.modality}
-                </span>
+              {m.description && (
+                <p className="text-xs text-gray-400 line-clamp-2">{m.description}</p>
               )}
-            </div>
-            {m.description && (
-              <p className="text-xs text-gray-400 line-clamp-2">{m.description}</p>
-            )}
-            <div className="mt-3 flex items-center gap-3 text-xs text-gray-500">
-              {m.context_length > 0 && <span>{(m.context_length / 1000).toFixed(0)}k ctx</span>}
-              {m.price_per_1k_input > 0 && <span>${m.price_per_1k_input.toFixed(5)}/1k in</span>}
-            </div>
-            {m.tags?.length > 0 && (
-              <div className="mt-2 flex flex-wrap gap-1">
-                {m.tags.map((t) => (
-                  <span key={t} className="text-xs bg-gray-800 text-gray-400 px-1.5 py-0.5 rounded">{t}</span>
-                ))}
+              <div className="mt-3 flex items-center gap-3 text-xs text-gray-500">
+                {m.context_length > 0 && <span>{(m.context_length / 1000).toFixed(0)}k ctx</span>}
+                {m.price_per_1k_input > 0 && <span>${m.price_per_1k_input.toFixed(5)}/1k in</span>}
               </div>
-            )}
+              {m.tags?.length > 0 && (
+                <div className="mt-2 flex flex-wrap gap-1">
+                  {m.tags.map((t) => (
+                    <span key={t} className="text-xs bg-gray-800 text-gray-400 px-1.5 py-0.5 rounded">{t}</span>
+                  ))}
+                </div>
+              )}
 
-            {selected?.id === m.id && (
-              <div className="mt-3 pt-3 border-t border-gray-800">
-                <div className="text-xs text-gray-500 mb-1.5">Python</div>
-                <pre className="bg-gray-950 rounded-lg p-3 text-xs text-gray-300 overflow-x-auto whitespace-pre-wrap font-mono">
-                  {snippet(m)}
-                </pre>
-              </div>
-            )}
-          </div>
-        ))}
-      </div>
+              {selected?.id === m.id && (
+                <div className="mt-3 pt-3 border-t border-gray-800">
+                  <div className="text-xs text-gray-500 mb-1.5">Python</div>
+                  <pre className="bg-gray-950 rounded-lg p-3 text-xs text-gray-300 overflow-x-auto whitespace-pre-wrap font-mono">
+                    {snippet(m)}
+                  </pre>
+                </div>
+              )}
+            </button>
+          ))}
+        </div>
+      )}
     </div>
   );
 }

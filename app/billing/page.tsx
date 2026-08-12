@@ -1,8 +1,21 @@
 "use client";
 import billing from "@/public/data/billing.json";
-import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, PieChart, Pie, Cell, Legend } from "recharts";
+import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, PieChart, Pie, Cell } from "recharts";
+import type { ValueType } from "recharts/types/component/DefaultTooltipContent";
 
 const PIE_COLORS = ["#7c3aed", "#0ea5e9", "#10b981", "#f59e0b"];
+
+type DailySpend = { date: string; amount_usd: number };
+type Invoice = { id: string; date: string; amount_usd: number; status: string };
+type ModelBreakdown = { model: string; spend_usd: number; pct: number };
+
+type BillingData = {
+  daily_spend: DailySpend[];
+  invoices: Invoice[];
+  model_breakdown: ModelBreakdown[];
+  total_spend_mtd: number;
+  budget_limit: number;
+};
 
 const invoiceStatusStyle: Record<string, string> = {
   paid: "bg-emerald-900/40 text-emerald-400 border-emerald-800",
@@ -11,7 +24,7 @@ const invoiceStatusStyle: Record<string, string> = {
 };
 
 export default function BillingPage() {
-  const b = billing as any;
+  const b: BillingData = billing as BillingData;
   const last14 = b.daily_spend.slice(-14);
   const mtdPct = Math.min(100, Math.round((b.total_spend_mtd / b.budget_limit) * 100));
 
@@ -38,11 +51,11 @@ export default function BillingPage() {
           <ResponsiveContainer width="100%" height={120}>
             <PieChart>
               <Pie data={b.model_breakdown} dataKey="spend_usd" nameKey="model" cx="50%" cy="50%" outerRadius={50} innerRadius={25}>
-                {b.model_breakdown.map((_: any, i: number) => (
+                {b.model_breakdown.map((_entry, i) => (
                   <Cell key={i} fill={PIE_COLORS[i % PIE_COLORS.length]} />
                 ))}
               </Pie>
-              <Tooltip contentStyle={{ background: "#111827", border: "1px solid #374151", borderRadius: 8, fontSize: 11 }} formatter={(v: any) => [`$${v.toFixed(2)}`, ""]} />
+              <Tooltip contentStyle={{ background: "#111827", border: "1px solid #374151", borderRadius: 8, fontSize: 11 }} formatter={(v: ValueType | undefined) => [`$${Number(Array.isArray(v) ? v[0] : (v ?? 0)).toFixed(2)}`, ""]} />
             </PieChart>
           </ResponsiveContainer>
         </div>
@@ -60,9 +73,9 @@ export default function BillingPage() {
               </linearGradient>
             </defs>
             <CartesianGrid strokeDasharray="3 3" stroke="#1f2937" />
-            <XAxis dataKey="date" tick={{ fill: "#6b7280", fontSize: 10 }} tickFormatter={(v) => v.slice(5)} />
-            <YAxis tick={{ fill: "#6b7280", fontSize: 10 }} tickFormatter={(v) => `$${v}`} />
-            <Tooltip contentStyle={{ background: "#111827", border: "1px solid #374151", borderRadius: 8 }} labelStyle={{ color: "#d1d5db" }} itemStyle={{ color: "#a78bfa" }} formatter={(v: any) => [`$${v}`, "Spend"]} />
+            <XAxis dataKey="date" tick={{ fill: "#6b7280", fontSize: 10 }} tickFormatter={(v: string) => v.slice(5)} />
+            <YAxis tick={{ fill: "#6b7280", fontSize: 10 }} tickFormatter={(v: number) => `$${v}`} />
+            <Tooltip contentStyle={{ background: "#111827", border: "1px solid #374151", borderRadius: 8 }} labelStyle={{ color: "#d1d5db" }} itemStyle={{ color: "#a78bfa" }} formatter={(v: ValueType | undefined) => [`$${Number(Array.isArray(v) ? v[0] : (v ?? 0)).toFixed(2)}`, "Spend"]} />
             <Area type="monotone" dataKey="amount_usd" stroke="#7c3aed" fill="url(#spend)" strokeWidth={2} />
           </AreaChart>
         </ResponsiveContainer>
@@ -82,7 +95,7 @@ export default function BillingPage() {
             </tr>
           </thead>
           <tbody>
-            {b.invoices.map((inv: any) => (
+            {b.invoices.map((inv) => (
               <tr key={inv.id} className="border-b border-gray-800/50 hover:bg-gray-800/20">
                 <td className="px-4 py-3 font-mono text-xs text-gray-400">{inv.id}</td>
                 <td className="px-4 py-3 text-gray-300">{inv.date}</td>

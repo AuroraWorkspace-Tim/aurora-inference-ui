@@ -40,31 +40,7 @@ const modalityColor: Record<string, string> = {
   video: "bg-emerald-900/40 text-emerald-400 border-emerald-800",
 };
 
-export default function ModelsPage() {
-  const [models, setModels] = useState<Model[]>(staticModels as Model[]);
-  const [loading, setLoading] = useState(true);
-  const [filter, setFilter] = useState("all");
-  const [selected, setSelected] = useState<Model | null>(null);
-
-  useEffect(() => {
-    fetch("/api/v1/models")
-      .then((r) => r.json())
-      .then((json) => {
-        // OpenAI-compatible list response: { data: [...] }
-        const raw: { id: string; owned_by?: string }[] = json.data ?? [];
-        if (raw.length === 0) return; // keep static fallback
-
-        const staticById = Object.fromEntries(staticModels.map((m) => [m.id, m]));
-        const merged = raw.map((m) => staticById[m.id] ?? inferMetadata(m));
-        setModels(merged as Model[]);
-      })
-      .catch(() => {/* keep static fallback */})
-      .finally(() => setLoading(false));
-  }, []);
-
-  const filtered = filter === "all" ? models : models.filter((m) => m.modality === filter);
-
-  const snippet = (m: Model) => `import openai
+const snippet = (m: Model) => `import openai
 
 client = openai.OpenAI(
     base_url="https://ai.aur.lu/v1",
@@ -77,6 +53,27 @@ response = client.chat.completions.create(
 )
 print(response.choices[0].message.content)`;
 
+export default function ModelsPage() {
+  const [models, setModels] = useState<Model[]>(staticModels as Model[]);
+  const [loading, setLoading] = useState(true);
+  const [filter, setFilter] = useState("all");
+  const [selected, setSelected] = useState<Model | null>(null);
+
+  useEffect(() => {
+    fetch("/api/models")
+      .then((r) => r.json())
+      .then((data: Model[]) => {
+        if (data.length === 0) return; // keep static fallback
+        const staticById = Object.fromEntries(staticModels.map((m) => [m.id, m]));
+        const merged = data.map((m) => staticById[m.id] ?? inferMetadata(m));
+        setModels(merged as Model[]);
+      })
+      .catch(() => {/* keep static fallback */})
+      .finally(() => setLoading(false));
+  }, []);
+
+  const filtered = filter === "all" ? models : models.filter((m) => m.modality === filter);
+
   return (
     <div className="p-6 space-y-6">
       <div>
@@ -86,7 +83,6 @@ print(response.choices[0].message.content)`;
         </p>
       </div>
 
-      {/* Filter tabs */}
       <div className="flex gap-2">
         {MODALITIES.map((m) => (
           <button

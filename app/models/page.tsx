@@ -14,22 +14,6 @@ type Model = {
   tags: string[];
 };
 
-// Fallback metadata for DO model IDs not in static catalog
-function inferMetadata(doModel: { id: string; owned_by?: string }): Model {
-  const [org, ...rest] = doModel.id.split("/");
-  return {
-    id: doModel.id,
-    name: rest.length ? rest.join("/") : doModel.id,
-    provider: doModel.owned_by ?? org,
-    modality: "text",
-    context_length: 0,
-    price_per_1k_input: 0,
-    price_per_1k_output: 0,
-    description: "",
-    tags: [],
-  };
-}
-
 const MODALITIES = ["all", "text", "code", "image", "audio", "video"];
 
 const modalityColor: Record<string, string> = {
@@ -50,13 +34,9 @@ export default function ModelsPage() {
     fetch("/api/v1/models")
       .then((r) => r.json())
       .then((json) => {
-        // OpenAI-compatible list response: { data: [...] }
-        const raw: { id: string; owned_by?: string }[] = json.data ?? [];
-        if (raw.length === 0) return; // keep static fallback
-
-        const staticById = Object.fromEntries(staticModels.map((m) => [m.id, m]));
-        const merged = raw.map((m) => staticById[m.id] ?? inferMetadata(m));
-        setModels(merged as Model[]);
+        const data: Model[] = json.data ?? [];
+        if (data.length === 0) return; // keep static fallback
+        setModels(data);
       })
       .catch(() => {/* keep static fallback */})
       .finally(() => setLoading(false));

@@ -1,6 +1,7 @@
 "use client";
 import billing from "@/public/data/billing.json";
 import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, PieChart, Pie, Cell } from "recharts";
+import type { ValueType } from "recharts/types/component/DefaultTooltipContent";
 
 type DailySpend = { date: string; amount_usd: number };
 type Invoice = { id: string; date: string; amount_usd: number; status: string };
@@ -23,7 +24,7 @@ const invoiceStatusStyle: Record<string, string> = {
 };
 
 export default function BillingPage() {
-  const b = billing as BillingData;
+  const b: BillingData = billing;
   const last14 = b.daily_spend.slice(-14);
   const mtdPct = Math.min(100, Math.round((b.total_spend_mtd / b.budget_limit) * 100));
 
@@ -55,7 +56,7 @@ export default function BillingPage() {
               </Pie>
               <Tooltip
                 contentStyle={{ background: "#111827", border: "1px solid #374151", borderRadius: 8, fontSize: 11 }}
-                formatter={(v: number | string) => [`$${Number(v ?? 0).toFixed(2)}`, ""]}
+                formatter={(v: ValueType | undefined) => [`$${Number(Array.isArray(v) ? v[0] : (v ?? 0)).toFixed(2)}`, ""]}
               />
             </PieChart>
           </ResponsiveContainer>

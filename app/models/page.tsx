@@ -1,6 +1,5 @@
 "use client";
 import { useState, useEffect } from "react";
-import staticModels from "@/public/data/models.json";
 
 type Model = {
   id: string;
@@ -25,20 +24,31 @@ const modalityColor: Record<string, string> = {
 };
 
 export default function ModelsPage() {
-  const [models, setModels] = useState<Model[]>(staticModels as Model[]);
+  const [models, setModels] = useState<Model[]>([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
   const [filter, setFilter] = useState("all");
   const [selected, setSelected] = useState<Model | null>(null);
 
   useEffect(() => {
     fetch("/api/v1/models")
+<<<<<<< HEAD
       .then((r) => r.json())
       .then((json) => {
         const data: Model[] = json.data ?? [];
         if (data.length === 0) return; // keep static fallback
         setModels(data);
+=======
+      .then((r) => {
+        if (!r.ok) throw new Error(`API error ${r.status}`);
+        return r.json();
+>>>>>>> b22cc90 (AUR-228: Remove static model catalog, fetch prices directly from DO endpoint)
       })
-      .catch(() => {/* keep static fallback */})
+      .then((json) => {
+        const models: Model[] = json.data ?? [];
+        setModels(models);
+      })
+      .catch((err) => setError(err.message))
       .finally(() => setLoading(false));
   }, []);
 
@@ -62,7 +72,7 @@ print(response.choices[0].message.content)`;
       <div>
         <h1 className="text-2xl font-bold text-white">Model Catalog</h1>
         <p className="text-gray-400 text-sm mt-1">
-          {loading ? "Loading…" : `${models.length} models available`}
+          {loading ? "Loading…" : error ? `Error: ${error}` : `${models.length} models available`}
         </p>
       </div>
 
@@ -82,6 +92,12 @@ print(response.choices[0].message.content)`;
           </button>
         ))}
       </div>
+
+      {error && (
+        <div className="bg-red-900/20 border border-red-800 rounded-xl p-4 text-red-400 text-sm">
+          Failed to load models from DO endpoint: {error}
+        </div>
+      )}
 
       <div className="grid grid-cols-3 gap-4">
         {filtered.map((m) => (
@@ -108,7 +124,12 @@ print(response.choices[0].message.content)`;
             )}
             <div className="mt-3 flex items-center gap-3 text-xs text-gray-500">
               {m.context_length > 0 && <span>{(m.context_length / 1000).toFixed(0)}k ctx</span>}
-              {m.price_per_1k_input > 0 && <span>${m.price_per_1k_input.toFixed(5)}/1k in</span>}
+              {m.price_per_1k_input > 0 && (
+                <span>${m.price_per_1k_input.toFixed(5)}/1k in</span>
+              )}
+              {m.price_per_1k_output > 0 && (
+                <span>${m.price_per_1k_output.toFixed(5)}/1k out</span>
+              )}
             </div>
             {m.tags?.length > 0 && (
               <div className="mt-2 flex flex-wrap gap-1">

@@ -55,7 +55,7 @@ export default function BillingPage() {
               </Pie>
               <Tooltip
                 contentStyle={{ background: "#111827", border: "1px solid #374151", borderRadius: 8, fontSize: 11 }}
-                formatter={(v) => [`$${Number(v ?? 0).toFixed(2)}`, ""]}
+                formatter={(v: number | string) => [`$${Number(v ?? 0).toFixed(2)}`, ""]}
               />
             </PieChart>
           </ResponsiveContainer>

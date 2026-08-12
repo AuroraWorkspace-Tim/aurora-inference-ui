@@ -80,7 +80,15 @@ export async function GET() {
     }
 
     const body = await res.json();
-    const doModels: DoModel[] = Array.isArray(body.data) ? body.data : [];
+    const doModels: DoModel[] | null = Array.isArray(body.data) ? body.data : null;
+
+    if (!doModels || doModels.length === 0) {
+      console.warn('[api/models] DO returned no models; serving static fallback');
+      return NextResponse.json(staticModels, {
+        headers: { 'X-Data-Source': 'static', 'X-Fallback-Reason': 'empty-response' },
+      });
+    }
+
     const models = doModels.map(merge);
 
     return NextResponse.json(models, {

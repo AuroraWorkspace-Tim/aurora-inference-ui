@@ -31,6 +31,7 @@ export async function GET() {
         stream: true,
         stream_options: { include_usage: true },
       }),
+      next: { revalidate: 3600 },
     });
 
     if (!res.ok) {

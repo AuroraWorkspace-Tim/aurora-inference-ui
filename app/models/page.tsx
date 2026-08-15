@@ -135,7 +135,11 @@ print(response.choices[0].message.content)`;
                 <span title="Input context window">{(m.context_length / 1000).toFixed(0)}k ctx</span>
               )}
               {m.max_output_tokens > 0 && (
-                <span title="Max output tokens">{(m.max_output_tokens / 1000).toFixed(0)}k out</span>
+                <span title="Max output tokens">
+                  {m.max_output_tokens >= 1000
+                    ? `${(m.max_output_tokens / 1000).toFixed(0)}k out`
+                    : `${m.max_output_tokens} out`}
+                </span>
               )}
               {m.price_per_1k_input > 0 && (
                 <span title="Input price per 1k tokens" className="text-emerald-500">

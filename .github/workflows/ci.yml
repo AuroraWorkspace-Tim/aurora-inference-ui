@@ -1,0 +1,52 @@
+name: CI
+
+on:
+  pull_request:
+    branches: [main]
+
+jobs:
+  build-lint:
+    name: Build & Lint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+      - name: Install dependencies
+        run: npm ci
+      - name: Build
+        run: npm run build
+        env:
+          # DO_MODEL_KEY is read at runtime only; a placeholder satisfies any
+          # build-time checks without leaking real credentials.
+          DO_MODEL_KEY: ci-placeholder
+      - name: Lint
+        run: npm run lint
+
+  smoke:
+    name: Smoke Test
+    runs-on: ubuntu-latest
+    needs: build-lint
+    steps:
+      - name: Models API — 200 OK
+        run: |
+          status=$(curl -fsS -o /dev/null -w "%{http_code}" \
+            https://aurora-inference-ui.vercel.app/api/v1/models || echo "000")
+          [ "$status" = "200" ] || (echo "Models API returned $status, expected 200" && exit 1)
+      - name: Models page — 200 OK
+        run: |
+          status=$(curl -fsS -o /dev/null -w "%{http_code}" \
+            https://aurora-inference-ui.vercel.app/models || echo "000")
+          [ "$status" = "200" ] || (echo "Models page returned $status, expected 200" && exit 1)
+      - name: Usage page — 200 OK
+        run: |
+          status=$(curl -fsS -o /dev/null -w "%{http_code}" \
+            https://aurora-inference-ui.vercel.app/usage || echo "000")
+          [ "$status" = "200" ] || (echo "Usage page returned $status, expected 200" && exit 1)
+      - name: API Keys page — 200 OK
+        run: |
+          status=$(curl -fsS -o /dev/null -w "%{http_code}" \
+            https://aurora-inference-ui.vercel.app/api-keys || echo "000")
+          [ "$status" = "200" ] || (echo "API Keys page returned $status, expected 200" && exit 1)

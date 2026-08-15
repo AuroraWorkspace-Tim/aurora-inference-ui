@@ -38,7 +38,7 @@ export default function Dashboard() {
         {[
           { label: "Requests Today", value: totalRequests.toLocaleString(), sub: "↑ 12% vs yesterday" },
           { label: "Tokens Today", value: `${(totalTokens / 1_000_000).toFixed(1)}M`, sub: "in + out" },
-          { label: "Spend Today", value: `$${todaySpend.toFixed(2)}`, sub: `of $${(billing as any).budget_limit}/mo` },
+          { label: "Spend Today", value: `$${todaySpend.toFixed(2)}`, sub: `of $${(billing as { budget_limit: number }).budget_limit}/mo` },
           { label: "Healthy Endpoints", value: `${healthyCount}/${endpoints.length}`, sub: "endpoints online" },
         ].map((s) => (
           <div key={s.label} className="bg-gray-900 rounded-xl border border-gray-800 p-4">

@@ -1,5 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
+import Link from "next/link";
 import staticModels from "@/public/data/models.json";
 
 type Model = {
@@ -68,11 +69,12 @@ export default function ModelsPage() {
 
   const filtered = filter === "all" ? models : models.filter((m) => m.modality === filter);
 
+  const origin = typeof window !== "undefined" ? window.location.origin : "https://aurora-inference-ui.vercel.app";
   const snippet = (m: Model) => `import openai
 
 client = openai.OpenAI(
-    base_url="https://ai.aur.lu/v1",
-    api_key="YOUR_AURORA_KEY",
+    base_url="${origin}/api/v1",
+    api_key="demo",
 )
 
 response = client.chat.completions.create(
@@ -165,9 +167,19 @@ print(response.choices[0].message.content)`;
               </div>
             )}
 
+            <div className="mt-3 pt-2 border-t border-gray-800 flex items-center justify-between">
+              <Link
+                href={`/playground?model=${encodeURIComponent(m.id)}`}
+                onClick={(e) => e.stopPropagation()}
+                className="text-xs text-violet-400 hover:text-violet-300 transition-colors"
+              >
+                Try in Playground →
+              </Link>
+            </div>
+
             {selected?.id === m.id && (
               <div className="mt-3 pt-3 border-t border-gray-800">
-                <div className="text-xs text-gray-500 mb-1.5">Python</div>
+                <div className="text-xs text-gray-500 mb-1.5">Python · demo endpoint</div>
                 <pre className="bg-gray-950 rounded-lg p-3 text-xs text-gray-300 overflow-x-auto whitespace-pre-wrap font-mono">
                   {snippet(m)}
                 </pre>

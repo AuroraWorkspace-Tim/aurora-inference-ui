@@ -1,0 +1,3038 @@
+{
+  "schema_version": "1.0.0",
+  "description": "DO serverless inference model catalog in the platform inference.models[] schema (OpenRouter-style). Generated from GET /v1/models and DO docs pricing/models pages. Pricing values are per-token decimal strings (divide DO per-1M docs values by 1,000,000). Fields the platform requires but DO does not publish (capacity_tpm, some hugging_face_id, license) are either sourced from upstream model cards or explicitly set to null.",
+  "source": {
+    "api": "GET https://inference.do-ai.run/v1/models",
+    "docs_models": "https://docs.digitalocean.com/products/inference/details/models/",
+    "docs_pricing": "https://docs.digitalocean.com/products/inference/details/pricing/",
+    "cross_reference": "https://github.com/aurorainfra/inference-roadmap/issues/134"
+  },
+  "models": [
+    {
+      "id": "alibaba-qwen3-32b",
+      "name": "Qwen3-32B",
+      "hugging_face_id": "Qwen/Qwen3-32B",
+      "created": 1752255238,
+      "description": null,
+      "license": null,
+      "license_url": null,
+      "model_card": "https://huggingface.co/Qwen/Qwen3-32B",
+      "context_length": 32768,
+      "max_output_tokens": 32768,
+      "input_modalities": [
+        "text"
+      ],
+      "output_modalities": [
+        "text"
+      ],
+      "pricing": {
+        "prompt": "0.00000025",
+        "completion": "0.00000055",
+        "input_cache_write": null,
+        "input_cache_read": null
+      },
+      "supported_sampling_parameters": [
+        "temperature",
+        "top_p",
+        "max_tokens",
+        "stop",
+        "frequency_penalty",
+        "presence_penalty",
+        "seed"
+      ],
+      "supported_features": [
+        "streaming",
+        "function_calling"
+      ],
+      "capacity_tpm": null,
+      "endpoint_template": "https://inference.do-ai.run/v1",
+      "do_owned_by": "digitalocean"
+    },
+    {
+      "id": "all-mini-lm-l6-v2",
+      "name": "all-MiniLM-L6-v2",
+      "hugging_face_id": "sentence-transformers/all-MiniLM-L6-v2",
+      "created": 1727124486,
+      "description": null,
+      "license": "Apache 2.0",
+      "license_url": "https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/blob/main/LICENSE",
+      "model_card": "https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2",
+      "context_length": null,
+      "max_output_tokens": null,
+      "input_modalities": [
+        "text"
+      ],
+      "output_modalities": [
+        "embedding"
+      ],
+      "pricing": {
+        "prompt": null,
+        "completion": null,
+        "input_cache_write": null,
+        "input_cache_read": null
+      },
+      "supported_sampling_parameters": [],
+      "supported_features": [
+        "streaming"
+      ],
+      "capacity_tpm": null,
+      "endpoint_template": "https://inference.do-ai.run/v1",
+      "do_owned_by": "digitalocean"
+    },
+    {
+      "id": "anthropic-claude-4.5-sonnet",
+      "name": "Claude Sonnet 4.5",
+      "hugging_face_id": null,
+      "created": 1762371241,
+      "description": null,
+      "license": "Anthropic Terms of Service",
+      "license_url": "https://www.anthropic.com/legal/consumer-terms",
+      "model_card": null,
+      "context_length": 200000,
+      "max_output_tokens": null,
+      "input_modalities": [
+        "text"
+      ],
+      "output_modalities": [
+        "text"
+      ],
+      "pricing": {
+        "prompt": "0.000003",
+        "completion": "0.000015",
+        "input_cache_write": "0.00000375",
+        "input_cache_read": "0.0000003"
+      },
+      "supported_sampling_parameters": [
+        "temperature",
+        "top_p",
+        "max_tokens",
+        "stop",
+        "frequency_penalty",
+        "presence_penalty",
+        "seed"
+      ],
+      "supported_features": [
+        "prompt_caching",
+        "streaming",
+        "function_calling",
+        "vision"
+      ],
+      "capacity_tpm": null,
+      "endpoint_template": "https://inference.do-ai.run/v1",
+      "do_owned_by": "anthropic"
+    },
+    {
+      "id": "anthropic-claude-4.6-sonnet",
+      "name": "Claude Sonnet 4.6",
+      "hugging_face_id": null,
+      "created": 1771366786,
+      "description": null,
+      "license": "Anthropic Terms of Service",
+      "license_url": "https://www.anthropic.com/legal/consumer-terms",
+      "model_card": null,
+      "context_length": 200000,
+      "max_output_tokens": 8192,
+      "input_modalities": [
+        "text"
+      ],
+      "output_modalities": [
+        "text"
+      ],
+      "pricing": {
+        "prompt": "0.000003",
+        "completion": "0.000015",
+        "input_cache_write": "0.00000375",
+        "input_cache_read": "0.0000003"
+      },
+      "supported_sampling_parameters": [
+        "temperature",
+        "top_p",
+        "max_tokens",
+        "stop",
+        "frequency_penalty",
+        "presence_penalty",
+        "seed"
+      ],
+      "supported_features": [
+        "prompt_caching",
+        "streaming",
+        "function_calling",
+        "vision"
+      ],
+      "capacity_tpm": null,
+      "endpoint_template": "https://inference.do-ai.run/v1",
+      "do_owned_by": "anthropic"
+    },
+    {
+      "id": "anthropic-claude-5-sonnet",
+      "name": "Claude Sonnet 5",
+      "hugging_face_id": null,
+      "created": 1782856178,
+      "description": null,
+      "license": "Anthropic Terms of Service",
+      "license_url": "https://www.anthropic.com/legal/consumer-terms",
+      "model_card": null,
+      "context_length": 1000000,
+      "max_output_tokens": 128000,
+      "input_modalities": [
+        "text"
+      ],
+      "output_modalities": [
+        "text"
+      ],
+      "pricing": {
+        "prompt": "0.000002",
+        "completion": "0.00001",
+        "input_cache_write": "0.0000025",
+        "input_cache_read": "0.0000002"
+      },
+      "supported_sampling_parameters": [
+        "temperature",
+        "top_p",
+        "max_tokens",
+        "stop",
+        "frequency_penalty",
+        "presence_penalty",
+        "seed"
+      ],
+      "supported_features": [
+        "prompt_caching",
+        "streaming",
+        "function_calling",
+        "vision"
+      ],
+      "capacity_tpm": null,
+      "endpoint_template": "https://inference.do-ai.run/v1",
+      "do_owned_by": "anthropic"
+    },
+    {
+      "id": "anthropic-claude-fable-5",
+      "name": "Claude Fable 5",
+      "hugging_face_id": null,
+      "created": 1781035402,
+      "description": null,
+      "license": "Anthropic Terms of Service",
+      "license_url": "https://www.anthropic.com/legal/consumer-terms",
+      "model_card": null,
+      "context_length": 1000000,
+      "max_output_tokens": 128000,
+      "input_modalities": [
+        "text"
+      ],
+      "output_modalities": [
+        "text"
+      ],
+      "pricing": {
+        "prompt": "0.00001",
+        "completion": "0.00005",
+        "input_cache_write": "0.0000125",
+        "input_cache_read": "0.000001"
+      },
+      "supported_sampling_parameters": [
+        "temperature",
+        "top_p",
+        "max_tokens",
+        "stop",
+        "frequency_penalty",
+        "presence_penalty",
+        "seed"
+      ],
+      "supported_features": [
+        "prompt_caching",
+        "streaming",
+        "function_calling",
+        "vision"
+      ],
+      "capacity_tpm": null,
+      "endpoint_template": "https://inference.do-ai.run/v1",
+      "do_owned_by": "anthropic"
+    },
+    {
+      "id": "anthropic-claude-haiku-4.5",
+      "name": "Claude Haiku 4.5",
+      "hugging_face_id": null,
+      "created": 1770276853,
+      "description": null,
+      "license": "Anthropic Terms of Service",
+      "license_url": "https://www.anthropic.com/legal/consumer-terms",
+      "model_card": null,
+      "context_length": 200000,
+      "max_output_tokens": 8192,
+      "input_modalities": [
+        "text"
+      ],
+      "output_modalities": [
+        "text"
+      ],
+      "pricing": {
+        "prompt": "0.000001",
+        "completion": "0.000005",
+        "input_cache_write": "0.00000125",
+        "input_cache_read": "0.0000001"
+      },
+      "supported_sampling_parameters": [
+        "temperature",
+        "top_p",
+        "max_tokens",
+        "stop",
+        "frequency_penalty",
+        "presence_penalty",
+        "seed"
+      ],
+      "supported_features": [
+        "prompt_caching",
+        "streaming",
+        "function_calling",
+        "vision"
+      ],
+      "capacity_tpm": null,
+      "endpoint_template": "https://inference.do-ai.run/v1",
+      "do_owned_by": "anthropic"
+    },
+    {
+      "id": "anthropic-claude-opus-4.5",
+      "name": "Claude Opus 4.5",
+      "hugging_face_id": null,
+      "created": 1764790378,
+      "description": null,
+      "license": "Anthropic Terms of Service",
+      "license_url": "https://www.anthropic.com/legal/consumer-terms",
+      "model_card": null,
+      "context_length": 200000,
+      "max_output_tokens": 8192,
+      "input_modalities": [
+        "text"
+      ],
+      "output_modalities": [
+        "text"
+      ],
+      "pricing": {
+        "prompt": "0.000005",
+        "completion": "0.000025",
+        "input_cache_write": "0.00000625",
+        "input_cache_read": "0.0000005"
+      },
+      "supported_sampling_parameters": [
+        "temperature",
+        "top_p",
+        "max_tokens",
+        "stop",
+        "frequency_penalty",
+        "presence_penalty",
+        "seed"
+      ],
+      "supported_features": [
+        "prompt_caching",
+        "streaming",
+        "function_calling",
+        "vision"
+      ],
+      "capacity_tpm": null,
+      "endpoint_template": "https://inference.do-ai.run/v1",
+      "do_owned_by": "anthropic"
+    },
+    {
+      "id": "anthropic-claude-opus-4.6",
+      "name": "Claude Opus 4.6",
+      "hugging_face_id": null,
+      "created": 1770333973,
+      "description": null,
+      "license": "Anthropic Terms of Service",
+      "license_url": "https://www.anthropic.com/legal/consumer-terms",
+      "model_card": null,
+      "context_length": 200000,
+      "max_output_tokens": 8192,
+      "input_modalities": [
+        "text"
+      ],
+      "output_modalities": [
+        "text"
+      ],
+      "pricing": {
+        "prompt": "0.000005",
+        "completion": "0.000025",
+        "input_cache_write": "0.00000625",
+        "input_cache_read": "0.0000005"
+      },
+      "supported_sampling_parameters": [
+        "temperature",
+        "top_p",
+        "max_tokens",
+        "stop",
+        "frequency_penalty",
+        "presence_penalty",
+        "seed"
+      ],
+      "supported_features": [
+        "prompt_caching",
+        "streaming",
+        "function_calling",
+        "vision"
+      ],
+      "capacity_tpm": null,
+      "endpoint_template": "https://inference.do-ai.run/v1",
+      "do_owned_by": "anthropic"
+    },
+    {
+      "id": "anthropic-claude-opus-4.7",
+      "name": "Claude Opus 4.7",
+      "hugging_face_id": null,
+      "created": 1776379334,
+      "description": null,
+      "license": "Anthropic Terms of Service",
+      "license_url": "https://www.anthropic.com/legal/consumer-terms",
+      "model_card": null,
+      "context_length": 200000,
+      "max_output_tokens": 8192,
+      "input_modalities": [
+        "text"
+      ],
+      "output_modalities": [
+        "text"
+      ],
+      "pricing": {
+        "prompt": "0.000005",
+        "completion": "0.000025",
+        "input_cache_write": "0.00000625",
+        "input_cache_read": "0.0000005"
+      },
+      "supported_sampling_parameters": [
+        "temperature",
+        "top_p",
+        "max_tokens",
+        "stop",
+        "frequency_penalty",
+        "presence_penalty",
+        "seed"
+      ],
+      "supported_features": [
+        "prompt_caching",
+        "streaming",
+        "function_calling",
+        "vision"
+      ],
+      "capacity_tpm": null,
+      "endpoint_template": "https://inference.do-ai.run/v1",
+      "do_owned_by": "anthropic"
+    },
+    {
+      "id": "anthropic-claude-opus-4.8",
+      "name": "Claude Opus 4.8",
+      "hugging_face_id": null,
+      "created": 1780009573,
+      "description": null,
+      "license": "Anthropic Terms of Service",
+      "license_url": "https://www.anthropic.com/legal/consumer-terms",
+      "model_card": null,
+      "context_length": 1000000,
+      "max_output_tokens": 128000,
+      "input_modalities": [
+        "text"
+      ],
+      "output_modalities": [
+        "text"
+      ],
+      "pricing": {
+        "prompt": "0.000005",
+        "completion": "0.000025",
+        "input_cache_write": "0.00000625",
+        "input_cache_read": "0.0000005"
+      },
+      "supported_sampling_parameters": [
+        "temperature",
+        "top_p",
+        "max_tokens",
+        "stop",
+        "frequency_penalty",
+        "presence_penalty",
+        "seed"
+      ],
+      "supported_features": [
+        "prompt_caching",
+        "streaming",
+        "function_calling",
+        "vision"
+      ],
+      "capacity_tpm": null,
+      "endpoint_template": "https://inference.do-ai.run/v1",
+      "do_owned_by": "anthropic"
+    },
+    {
+      "id": "anthropic-claude-opus-5",
+      "name": "Claude Opus 5",
+      "hugging_face_id": null,
+      "created": 1784926741,
+      "description": null,
+      "license": "Anthropic Terms of Service",
+      "license_url": "https://www.anthropic.com/legal/consumer-terms",
+      "model_card": null,
+      "context_length": 1000000,
+      "max_output_tokens": 128000,
+      "input_modalities": [
+        "text"
+      ],
+      "output_modalities": [
+        "text"
+      ],
+      "pricing": {
+        "prompt": "0.000005",
+        "completion": "0.000025",
+        "input_cache_write": "0.00000625",
+        "input_cache_read": "0.0000005"
+      },
+      "supported_sampling_parameters": [
+        "temperature",
+        "top_p",
+        "max_tokens",
+        "stop",
+        "frequency_penalty",
+        "presence_penalty",
+        "seed"
+      ],
+      "supported_features": [
+        "prompt_caching",
+        "streaming",
+        "function_calling",
+        "vision"
+      ],
+      "capacity_tpm": null,
+      "endpoint_template": "https://inference.do-ai.run/v1",
+      "do_owned_by": "anthropic"
+    },
+    {
+      "id": "arcee-trinity-large-thinking",
+      "name": "Arcee Trinity Large Thinking",
+      "hugging_face_id": "arcee-ai/Trinity-Large-Thinking",
+      "created": 1775072224,
+      "description": null,
+      "license": null,
+      "license_url": null,
+      "model_card": "https://huggingface.co/arcee-ai/Trinity-Large-Thinking",
+      "context_length": 128000,
+      "max_output_tokens": 32000,
+      "input_modalities": [
+        "text"
+      ],
+      "output_modalities": [
+        "text"
+      ],
+      "pricing": {
+        "prompt": "0.00000025",
+        "completion": "0.0000009",
+        "input_cache_write": null,
+        "input_cache_read": "0.00000006"
+      },
+      "supported_sampling_parameters": [
+        "temperature",
+        "top_p",
+        "max_tokens",
+        "stop",
+        "frequency_penalty",
+        "presence_penalty",
+        "seed"
+      ],
+      "supported_features": [
+        "prompt_caching",
+        "streaming",
+        "function_calling"
+      ],
+      "capacity_tpm": null,
+      "endpoint_template": "https://inference.do-ai.run/v1",
+      "do_owned_by": "digitalocean"
+    },
+    {
+      "id": "bge-m3",
+      "name": "BGE M3",
+      "hugging_face_id": "BAAI/bge-m3",
+      "created": 1774281224,
+      "description": null,
+      "license": "MIT License",
+      "license_url": "https://huggingface.co/BAAI/bge-m3/blob/main/LICENSE",
+      "model_card": "https://huggingface.co/BAAI/bge-m3",
+      "context_length": null,
+      "max_output_tokens": null,
+      "input_modalities": [
+        "text"
+      ],
+      "output_modalities": [
+        "embedding"
+      ],
+      "pricing": {
+        "prompt": null,
+        "completion": null,
+        "input_cache_write": null,
+        "input_cache_read": null
+      },
+      "supported_sampling_parameters": [],
+      "supported_features": [
+        "streaming"
+      ],
+      "capacity_tpm": null,
+      "endpoint_template": "https://inference.do-ai.run/v1",
+      "do_owned_by": "digitalocean"
+    },
+    {
+      "id": "bge-reranker-v2-m3",
+      "name": "BGE Reranker v2 M3",
+      "hugging_face_id": "BAAI/bge-reranker-v2-m3",
+      "created": 1775636284,
+      "description": null,
+      "license": "MIT License",
+      "license_url": "https://huggingface.co/BAAI/bge-reranker-v2-m3/blob/main/LICENSE",
+      "model_card": "https://huggingface.co/BAAI/bge-reranker-v2-m3",
+      "context_length": null,
+      "max_output_tokens": null,
+      "input_modalities": [
+        "text"
+      ],
+      "output_modalities": [
+        "score"
+      ],
+      "pricing": {
+        "prompt": null,
+        "completion": null,
+        "input_cache_write": null,
+        "input_cache_read": null
+      },
+      "supported_sampling_parameters": [],
+      "supported_features": [
+        "streaming"
+      ],
+      "capacity_tpm": null,
+      "endpoint_template": "https://inference.do-ai.run/v1",
+      "do_owned_by": "digitalocean"
+    },
+    {
+      "id": "deepseek-3.2",
+      "name": "DeepSeek V3.2",
+      "hugging_face_id": "deepseek-ai/DeepSeek-V3.2",
+      "created": 1776375302,
+      "description": null,
+      "license": "DeepSeek Model License",
+      "license_url": "https://github.com/deepseek-ai/DeepSeek-V3/blob/main/LICENSE",
+      "model_card": "https://huggingface.co/deepseek-ai/DeepSeek-V3.2",
+      "context_length": 163840,
+      "max_output_tokens": 163840,
+      "input_modalities": [
+        "text"
+      ],
+      "output_modalities": [
+        "text"
+      ],
+      "pricing": {
+        "prompt": "0.00000025",
+        "completion": "0.0000008",
+        "input_cache_write": null,
+        "input_cache_read": "0.000000075"
+      },
+      "supported_sampling_parameters": [
+        "temperature",
+        "top_p",
+        "max_tokens",
+        "stop",
+        "frequency_penalty",
+        "presence_penalty",
+        "seed"
+      ],
+      "supported_features": [
+        "prompt_caching",
+        "streaming",
+        "function_calling"
+      ],
+      "capacity_tpm": null,
+      "endpoint_template": "https://inference.do-ai.run/v1",
+      "do_owned_by": "digitalocean"
+    },
+    {
+      "id": "deepseek-4-flash",
+      "name": "DeepSeek V4 Flash",
+      "hugging_face_id": "deepseek-ai/DeepSeek-V4-Flash",
+      "created": 1779896095,
+      "description": null,
+      "license": "DeepSeek Model License",
+      "license_url": "https://github.com/deepseek-ai/DeepSeek-V4-Flash/blob/main/LICENSE",
+      "model_card": "https://huggingface.co/deepseek-ai/DeepSeek-V4-Flash",
+      "context_length": 1048576,
+      "max_output_tokens": 384000,
+      "input_modalities": [
+        "text"
+      ],
+      "output_modalities": [
+        "text"
+      ],
+      "pricing": {
+        "prompt": "0.000000068",
+        "completion": "0.000000168",
+        "input_cache_write": null,
+        "input_cache_read": "0.000000017"
+      },
+      "supported_sampling_parameters": [
+        "temperature",
+        "top_p",
+        "max_tokens",
+        "stop",
+        "frequency_penalty",
+        "presence_penalty",
+        "seed"
+      ],
+      "supported_features": [
+        "streaming",
+        "function_calling"
+      ],
+      "capacity_tpm": null,
+      "endpoint_template": "https://inference.do-ai.run/v1",
+      "do_owned_by": "digitalocean"
+    },
+    {
+      "id": "deepseek-r1-distill-llama-70b",
+      "name": "DeepSeek R1 Distill Llama 70B",
+      "hugging_face_id": "deepseek-ai/DeepSeek-R1-Distill-Llama-70B",
+      "created": 1738947921,
+      "description": null,
+      "license": "MIT License",
+      "license_url": "https://github.com/deepseek-ai/DeepSeek-R1/blob/main/LICENSE",
+      "model_card": "https://huggingface.co/deepseek-ai/DeepSeek-R1-Distill-Llama-70B",
+      "context_length": 32768,
+      "max_output_tokens": 8192,
+      "input_modalities": [
+        "text"
+      ],
+      "output_modalities": [
+        "text"
+      ],
+      "pricing": {
+        "prompt": "0.00000099",
+        "completion": "0.00000099",
+        "input_cache_write": null,
+        "input_cache_read": null
+      },
+      "supported_sampling_parameters": [
+        "temperature",
+        "top_p",
+        "max_tokens",
+        "stop",
+        "frequency_penalty",
+        "presence_penalty",
+        "seed"
+      ],
+      "supported_features": [
+        "streaming",
+        "function_calling"
+      ],
+      "capacity_tpm": null,
+      "endpoint_template": "https://inference.do-ai.run/v1",
+      "do_owned_by": "digitalocean"
+    },
+    {
+      "id": "deepseek-v4-flash-0731",
+      "name": "DeepSeek V4 Flash 0731",
+      "hugging_face_id": "deepseek-ai/DeepSeek-V4-Flash-0731",
+      "created": 1786052860,
+      "description": null,
+      "license": "DeepSeek Model License",
+      "license_url": "https://github.com/deepseek-ai/DeepSeek-V4-Flash/blob/main/LICENSE",
+      "model_card": "https://huggingface.co/deepseek-ai/DeepSeek-V4-Flash-0731",
+      "context_length": 1048576,
+      "max_output_tokens": 1048576,
+      "input_modalities": [
+        "text"
+      ],
+      "output_modalities": [
+        "text"
+      ],
+      "pricing": {
+        "prompt": "0.00000008",
+        "completion": "0.000000252",
+        "input_cache_write": null,
+        "input_cache_read": "0.000000025"
+      },
+      "supported_sampling_parameters": [
+        "temperature",
+        "top_p",
+        "max_tokens",
+        "stop",
+        "frequency_penalty",
+        "presence_penalty",
+        "seed"
+      ],
+      "supported_features": [
+        "prompt_caching",
+        "streaming",
+        "function_calling"
+      ],
+      "capacity_tpm": null,
+      "endpoint_template": "https://inference.do-ai.run/v1",
+      "do_owned_by": "digitalocean"
+    },
+    {
+      "id": "deepseek-v4-pro",
+      "name": "DeepSeek V4 Pro",
+      "hugging_face_id": "deepseek-ai/DeepSeek-V4-Pro",
+      "created": 1777633630,
+      "description": null,
+      "license": "DeepSeek Model License",
+      "license_url": "https://github.com/deepseek-ai/DeepSeek-V4-Pro/blob/main/LICENSE",
+      "model_card": "https://huggingface.co/deepseek-ai/DeepSeek-V4-Pro",
+      "context_length": 1048576,
+      "max_output_tokens": 384000,
+      "input_modalities": [
+        "text"
+      ],
+      "output_modalities": [
+        "text"
+      ],
+      "pricing": {
+        "prompt": "0.00000087",
+        "completion": "0.00000174",
+        "input_cache_write": null,
+        "input_cache_read": "0.000000174"
+      },
+      "supported_sampling_parameters": [
+        "temperature",
+        "top_p",
+        "max_tokens",
+        "stop",
+        "frequency_penalty",
+        "presence_penalty",
+        "seed"
+      ],
+      "supported_features": [
+        "prompt_caching",
+        "streaming",
+        "function_calling"
+      ],
+      "capacity_tpm": null,
+      "endpoint_template": "https://inference.do-ai.run/v1",
+      "do_owned_by": "digitalocean"
+    },
+    {
+      "id": "deepseek-v4-pro-0813",
+      "name": "DeepSeek V4 Pro 0813",
+      "hugging_face_id": "deepseek-ai/DeepSeek-V4-Pro-0813",
+      "created": 1786755162,
+      "description": null,
+      "license": "DeepSeek Model License",
+      "license_url": "https://github.com/deepseek-ai/DeepSeek-V4-Pro/blob/main/LICENSE",
+      "model_card": "https://huggingface.co/deepseek-ai/DeepSeek-V4-Pro-0813",
+      "context_length": 1048576,
+      "max_output_tokens": 1048576,
+      "input_modalities": [
+        "text"
+      ],
+      "output_modalities": [
+        "text"
+      ],
+      "pricing": {
+        "prompt": "0.00000132",
+        "completion": "0.00000396",
+        "input_cache_write": null,
+        "input_cache_read": "0.000000044"
+      },
+      "supported_sampling_parameters": [
+        "temperature",
+        "top_p",
+        "max_tokens",
+        "stop",
+        "frequency_penalty",
+        "presence_penalty",
+        "seed"
+      ],
+      "supported_features": [
+        "prompt_caching",
+        "streaming",
+        "function_calling"
+      ],
+      "capacity_tpm": null,
+      "endpoint_template": "https://inference.do-ai.run/v1",
+      "do_owned_by": "digitalocean"
+    },
+    {
+      "id": "e5-large-v2",
+      "name": "E5 Large v2",
+      "hugging_face_id": "intfloat/e5-large-v2",
+      "created": 1774281191,
+      "description": null,
+      "license": "MIT License",
+      "license_url": "https://huggingface.co/intfloat/e5-large-v2/blob/main/LICENSE",
+      "model_card": "https://huggingface.co/intfloat/e5-large-v2",
+      "context_length": null,
+      "max_output_tokens": null,
+      "input_modalities": [
+        "text"
+      ],
+      "output_modalities": [
+        "embedding"
+      ],
+      "pricing": {
+        "prompt": null,
+        "completion": null,
+        "input_cache_write": null,
+        "input_cache_read": null
+      },
+      "supported_sampling_parameters": [],
+      "supported_features": [
+        "streaming"
+      ],
+      "capacity_tpm": null,
+      "endpoint_template": "https://inference.do-ai.run/v1",
+      "do_owned_by": "digitalocean"
+    },
+    {
+      "id": "gemma-4-31B-it",
+      "name": "Gemma 4 31B Instruct",
+      "hugging_face_id": "google/gemma-4-27b-it",
+      "created": 1776195691,
+      "description": null,
+      "license": "Gemma Terms of Use",
+      "license_url": "https://ai.google.dev/gemma/terms",
+      "model_card": "https://huggingface.co/google/gemma-4-27b-it",
+      "context_length": 256000,
+      "max_output_tokens": 8192,
+      "input_modalities": [
+        "text",
+        "image"
+      ],
+      "output_modalities": [
+        "text"
+      ],
+      "pricing": {
+        "prompt": "0.00000018",
+        "completion": "0.0000005",
+        "input_cache_write": null,
+        "input_cache_read": "0.000000036"
+      },
+      "supported_sampling_parameters": [
+        "temperature",
+        "top_p",
+        "max_tokens",
+        "stop",
+        "frequency_penalty",
+        "presence_penalty",
+        "seed"
+      ],
+      "supported_features": [
+        "prompt_caching",
+        "streaming",
+        "function_calling",
+        "vision"
+      ],
+      "capacity_tpm": null,
+      "endpoint_template": "https://inference.do-ai.run/v1",
+      "do_owned_by": "digitalocean"
+    },
+    {
+      "id": "glm-5",
+      "name": "GLM-5",
+      "hugging_face_id": "zai-org/GLM-5",
+      "created": 1773360634,
+      "description": null,
+      "license": null,
+      "license_url": null,
+      "model_card": "https://huggingface.co/zai-org/GLM-5",
+      "context_length": 64000,
+      "max_output_tokens": 64000,
+      "input_modalities": [
+        "text"
+      ],
+      "output_modalities": [
+        "text"
+      ],
+      "pricing": {
+        "prompt": "0.00000075",
+        "completion": "0.0000024",
+        "input_cache_write": null,
+        "input_cache_read": "0.0000002"
+      },
+      "supported_sampling_parameters": [
+        "temperature",
+        "top_p",
+        "max_tokens",
+        "stop",
+        "frequency_penalty",
+        "presence_penalty",
+        "seed"
+      ],
+      "supported_features": [
+        "prompt_caching",
+        "streaming",
+        "function_calling"
+      ],
+      "capacity_tpm": null,
+      "endpoint_template": "https://inference.do-ai.run/v1",
+      "do_owned_by": "digitalocean"
+    },
+    {
+      "id": "glm-5.1",
+      "name": "GLM-5.1",
+      "hugging_face_id": "zai-org/GLM-5.1",
+      "created": 1782322674,
+      "description": null,
+      "license": null,
+      "license_url": null,
+      "model_card": "https://huggingface.co/zai-org/GLM-5.1",
+      "context_length": 163840,
+      "max_output_tokens": 163840,
+      "input_modalities": [
+        "text"
+      ],
+      "output_modalities": [
+        "text"
+      ],
+      "pricing": {
+        "prompt": "0.000000975",
+        "completion": "0.0000043",
+        "input_cache_write": null,
+        "input_cache_read": "0.00000026"
+      },
+      "supported_sampling_parameters": [
+        "temperature",
+        "top_p",
+        "max_tokens",
+        "stop",
+        "frequency_penalty",
+        "presence_penalty",
+        "seed"
+      ],
+      "supported_features": [
+        "prompt_caching",
+        "streaming",
+        "function_calling"
+      ],
+      "capacity_tpm": null,
+      "endpoint_template": "https://inference.do-ai.run/v1",
+      "do_owned_by": "digitalocean"
+    },
+    {
+      "id": "glm-5.2",
+      "name": "GLM-5.2",
+      "hugging_face_id": "zai-org/GLM-5.2",
+      "created": 1782174301,
+      "description": null,
+      "license": null,
+      "license_url": null,
+      "model_card": "https://huggingface.co/zai-org/GLM-5.2",
+      "context_length": 262144,
+      "max_output_tokens": 262144,
+      "input_modalities": [
+        "text"
+      ],
+      "output_modalities": [
+        "text"
+      ],
+      "pricing": {
+        "prompt": "0.00000063",
+        "completion": "0.00000198",
+        "input_cache_write": null,
+        "input_cache_read": "0.000000095"
+      },
+      "supported_sampling_parameters": [
+        "temperature",
+        "top_p",
+        "max_tokens",
+        "stop",
+        "frequency_penalty",
+        "presence_penalty",
+        "seed"
+      ],
+      "supported_features": [
+        "prompt_caching",
+        "streaming",
+        "function_calling"
+      ],
+      "capacity_tpm": null,
+      "endpoint_template": "https://inference.do-ai.run/v1",
+      "do_owned_by": "digitalocean"
+    },
+    {
+      "id": "gte-large-en-v1.5",
+      "name": "GTE Large en v1.5",
+      "hugging_face_id": "Alibaba-NLP/gte-large-en-v1.5",
+      "created": 1727124486,
+      "description": null,
+      "license": "Apache 2.0",
+      "license_url": "https://huggingface.co/Alibaba-NLP/gte-large-en-v1.5/blob/main/LICENSE",
+      "model_card": "https://huggingface.co/Alibaba-NLP/gte-large-en-v1.5",
+      "context_length": null,
+      "max_output_tokens": null,
+      "input_modalities": [
+        "text"
+      ],
+      "output_modalities": [
+        "embedding"
+      ],
+      "pricing": {
+        "prompt": null,
+        "completion": null,
+        "input_cache_write": null,
+        "input_cache_read": null
+      },
+      "supported_sampling_parameters": [],
+      "supported_features": [
+        "streaming"
+      ],
+      "capacity_tpm": null,
+      "endpoint_template": "https://inference.do-ai.run/v1",
+      "do_owned_by": "digitalocean"
+    },
+    {
+      "id": "kimi-k2.5",
+      "name": "Kimi K2.5",
+      "hugging_face_id": "moonshotai/Kimi-K2.5",
+      "created": 1773347767,
+      "description": null,
+      "license": null,
+      "license_url": null,
+      "model_card": "https://huggingface.co/moonshotai/Kimi-K2.5",
+      "context_length": 262144,
+      "max_output_tokens": 262144,
+      "input_modalities": [
+        "text",
+        "image"
+      ],
+      "output_modalities": [
+        "text"
+      ],
+      "pricing": {
+        "prompt": "0.000000375",
+        "completion": "0.000002025",
+        "input_cache_write": null,
+        "input_cache_read": "0.000000203"
+      },
+      "supported_sampling_parameters": [
+        "temperature",
+        "top_p",
+        "max_tokens",
+        "stop",
+        "frequency_penalty",
+        "presence_penalty",
+        "seed"
+      ],
+      "supported_features": [
+        "streaming",
+        "function_calling",
+        "vision"
+      ],
+      "capacity_tpm": null,
+      "endpoint_template": "https://inference.do-ai.run/v1",
+      "do_owned_by": "digitalocean"
+    },
+    {
+      "id": "kimi-k2.6",
+      "name": "Kimi K2.6",
+      "hugging_face_id": "moonshotai/Kimi-K2.6",
+      "created": 1778000987,
+      "description": null,
+      "license": null,
+      "license_url": null,
+      "model_card": "https://huggingface.co/moonshotai/Kimi-K2.6",
+      "context_length": 262144,
+      "max_output_tokens": 262144,
+      "input_modalities": [
+        "text"
+      ],
+      "output_modalities": [
+        "text"
+      ],
+      "pricing": {
+        "prompt": "0.00000076",
+        "completion": "0.0000032",
+        "input_cache_write": null,
+        "input_cache_read": "0.00000019"
+      },
+      "supported_sampling_parameters": [
+        "temperature",
+        "top_p",
+        "max_tokens",
+        "stop",
+        "frequency_penalty",
+        "presence_penalty",
+        "seed"
+      ],
+      "supported_features": [
+        "streaming",
+        "function_calling"
+      ],
+      "capacity_tpm": null,
+      "endpoint_template": "https://inference.do-ai.run/v1",
+      "do_owned_by": "digitalocean"
+    },
+    {
+      "id": "kimi-k3",
+      "name": "Kimi K3",
+      "hugging_face_id": "moonshotai/Kimi-K3",
+      "created": 1785164400,
+      "description": null,
+      "license": null,
+      "license_url": null,
+      "model_card": "https://huggingface.co/moonshotai/Kimi-K3",
+      "context_length": null,
+      "max_output_tokens": null,
+      "input_modalities": [
+        "text",
+        "image"
+      ],
+      "output_modalities": [
+        "text"
+      ],
+      "pricing": {
+        "prompt": "0.00000285",
+        "completion": "0.00001425",
+        "input_cache_write": null,
+        "input_cache_read": "0.000000285"
+      },
+      "supported_sampling_parameters": [
+        "temperature",
+        "top_p",
+        "max_tokens",
+        "stop",
+        "frequency_penalty",
+        "presence_penalty",
+        "seed"
+      ],
+      "supported_features": [
+        "streaming",
+        "function_calling",
+        "vision"
+      ],
+      "capacity_tpm": null,
+      "endpoint_template": "https://inference.do-ai.run/v1",
+      "do_owned_by": "digitalocean"
+    },
+    {
+      "id": "llama-4-maverick",
+      "name": "Llama 4 Maverick 17B 128E",
+      "hugging_face_id": "meta-llama/Llama-4-Maverick-17B-128E-Instruct",
+      "created": 1776729457,
+      "description": null,
+      "license": "Llama Community License",
+      "license_url": "https://github.com/meta-llama/llama-models/blob/main/models/llama4/LICENSE",
+      "model_card": "https://huggingface.co/meta-llama/Llama-4-Maverick-17B-128E-Instruct",
+      "context_length": 128000,
+      "max_output_tokens": 16384,
+      "input_modalities": [
+        "text"
+      ],
+      "output_modalities": [
+        "text"
+      ],
+      "pricing": {
+        "prompt": "0.0000002",
+        "completion": "0.000000696",
+        "input_cache_write": null,
+        "input_cache_read": null
+      },
+      "supported_sampling_parameters": [
+        "temperature",
+        "top_p",
+        "max_tokens",
+        "stop",
+        "frequency_penalty",
+        "presence_penalty",
+        "seed"
+      ],
+      "supported_features": [
+        "streaming",
+        "function_calling"
+      ],
+      "capacity_tpm": null,
+      "endpoint_template": "https://inference.do-ai.run/v1",
+      "do_owned_by": "digitalocean"
+    },
+    {
+      "id": "llama3.3-70b-instruct",
+      "name": "Llama 3.3 Instruct 70B",
+      "hugging_face_id": "meta-llama/Llama-3.3-70B-Instruct",
+      "created": 1736801780,
+      "description": null,
+      "license": "Llama Community License",
+      "license_url": "https://github.com/meta-llama/llama-models/blob/main/models/llama3_3/LICENSE",
+      "model_card": "https://huggingface.co/meta-llama/Llama-3.3-70B-Instruct",
+      "context_length": 128000,
+      "max_output_tokens": 4096,
+      "input_modalities": [
+        "text"
+      ],
+      "output_modalities": [
+        "text"
+      ],
+      "pricing": {
+        "prompt": "0.00000065",
+        "completion": "0.00000065",
+        "input_cache_write": null,
+        "input_cache_read": null
+      },
+      "supported_sampling_parameters": [
+        "temperature",
+        "top_p",
+        "max_tokens",
+        "stop",
+        "frequency_penalty",
+        "presence_penalty",
+        "seed"
+      ],
+      "supported_features": [
+        "streaming",
+        "function_calling"
+      ],
+      "capacity_tpm": null,
+      "endpoint_template": "https://inference.do-ai.run/v1",
+      "do_owned_by": "digitalocean"
+    },
+    {
+      "id": "mimo-v2.5-pro",
+      "name": "MiMo V2.5 Pro",
+      "hugging_face_id": "XiaomiMiMo/MiMo-V2.5-Pro",
+      "created": 1781721728,
+      "description": null,
+      "license": null,
+      "license_url": null,
+      "model_card": "https://huggingface.co/XiaomiMiMo/MiMo-V2.5-Pro",
+      "context_length": 262144,
+      "max_output_tokens": 262144,
+      "input_modalities": [
+        "text"
+      ],
+      "output_modalities": [
+        "text"
+      ],
+      "pricing": {
+        "prompt": "0.0000004",
+        "completion": "0.0000015",
+        "input_cache_write": null,
+        "input_cache_read": "0.00000008"
+      },
+      "supported_sampling_parameters": [
+        "temperature",
+        "top_p",
+        "max_tokens",
+        "stop",
+        "frequency_penalty",
+        "presence_penalty",
+        "seed"
+      ],
+      "supported_features": [
+        "prompt_caching",
+        "streaming",
+        "function_calling"
+      ],
+      "capacity_tpm": null,
+      "endpoint_template": "https://inference.do-ai.run/v1",
+      "do_owned_by": "digitalocean"
+    },
+    {
+      "id": "minimax-m2.5",
+      "name": "MiniMax M2.5",
+      "hugging_face_id": "MiniMaxAI/MiniMax-M2.5",
+      "created": 1773360634,
+      "description": null,
+      "license": null,
+      "license_url": null,
+      "model_card": "https://huggingface.co/MiniMaxAI/MiniMax-M2.5",
+      "context_length": 65536,
+      "max_output_tokens": 65536,
+      "input_modalities": [
+        "text"
+      ],
+      "output_modalities": [
+        "text"
+      ],
+      "pricing": {
+        "prompt": "0.000000225",
+        "completion": "0.0000009",
+        "input_cache_write": null,
+        "input_cache_read": "0.00000006"
+      },
+      "supported_sampling_parameters": [
+        "temperature",
+        "top_p",
+        "max_tokens",
+        "stop",
+        "frequency_penalty",
+        "presence_penalty",
+        "seed"
+      ],
+      "supported_features": [
+        "streaming",
+        "function_calling"
+      ],
+      "capacity_tpm": null,
+      "endpoint_template": "https://inference.do-ai.run/v1",
+      "do_owned_by": "digitalocean"
+    },
+    {
+      "id": "mistral-3-14B",
+      "name": "Ministral 3 14B Instruct",
+      "hugging_face_id": "mistralai/Ministral-3-14B-Instruct-2512",
+      "created": 1776471052,
+      "description": null,
+      "license": "MistralAI Research License",
+      "license_url": "https://mistral.ai/licenses/mnpl-0.1.md",
+      "model_card": "https://huggingface.co/mistralai/Ministral-3-14B-Instruct-2512",
+      "context_length": 262144,
+      "max_output_tokens": null,
+      "input_modalities": [
+        "text"
+      ],
+      "output_modalities": [
+        "text"
+      ],
+      "pricing": {
+        "prompt": "0.0000002",
+        "completion": "0.0000002",
+        "input_cache_write": null,
+        "input_cache_read": null
+      },
+      "supported_sampling_parameters": [
+        "temperature",
+        "top_p",
+        "max_tokens",
+        "stop",
+        "frequency_penalty",
+        "presence_penalty",
+        "seed"
+      ],
+      "supported_features": [
+        "streaming",
+        "function_calling"
+      ],
+      "capacity_tpm": null,
+      "endpoint_template": "https://inference.do-ai.run/v1",
+      "do_owned_by": "digitalocean"
+    },
+    {
+      "id": "multi-qa-mpnet-base-dot-v1",
+      "name": "Multi-QA mpnet base dot v1",
+      "hugging_face_id": "sentence-transformers/multi-qa-mpnet-base-dot-v1",
+      "created": 1727124486,
+      "description": null,
+      "license": "Apache 2.0",
+      "license_url": "https://huggingface.co/sentence-transformers/multi-qa-mpnet-base-dot-v1/blob/main/LICENSE",
+      "model_card": "https://huggingface.co/sentence-transformers/multi-qa-mpnet-base-dot-v1",
+      "context_length": null,
+      "max_output_tokens": null,
+      "input_modalities": [
+        "text"
+      ],
+      "output_modalities": [
+        "embedding"
+      ],
+      "pricing": {
+        "prompt": null,
+        "completion": null,
+        "input_cache_write": null,
+        "input_cache_read": null
+      },
+      "supported_sampling_parameters": [],
+      "supported_features": [
+        "streaming"
+      ],
+      "capacity_tpm": null,
+      "endpoint_template": "https://inference.do-ai.run/v1",
+      "do_owned_by": "digitalocean"
+    },
+    {
+      "id": "nemotron-3-nano-omni",
+      "name": "Nemotron 3 Nano Omni",
+      "hugging_face_id": "nvidia/Nemotron-3-Nano-Omni",
+      "created": 1777148824,
+      "description": null,
+      "license": null,
+      "license_url": null,
+      "model_card": "https://huggingface.co/nvidia/Nemotron-3-Nano-Omni",
+      "context_length": 65536,
+      "max_output_tokens": 65536,
+      "input_modalities": [
+        "text",
+        "image",
+        "audio"
+      ],
+      "output_modalities": [
+        "text"
+      ],
+      "pricing": {
+        "prompt": "0.0000005",
+        "completion": "0.0000009",
+        "input_cache_write": null,
+        "input_cache_read": null
+      },
+      "supported_sampling_parameters": [
+        "temperature",
+        "top_p",
+        "max_tokens",
+        "stop",
+        "frequency_penalty",
+        "presence_penalty",
+        "seed"
+      ],
+      "supported_features": [
+        "streaming",
+        "function_calling",
+        "vision"
+      ],
+      "capacity_tpm": null,
+      "endpoint_template": "https://inference.do-ai.run/v1",
+      "do_owned_by": "digitalocean"
+    },
+    {
+      "id": "nemotron-3-ultra-550b",
+      "name": "Nemotron 3 Ultra 550B",
+      "hugging_face_id": "nvidia/Nemotron-3-Ultra-550B-Instruct",
+      "created": 1780548582,
+      "description": null,
+      "license": null,
+      "license_url": null,
+      "model_card": "https://huggingface.co/nvidia/Nemotron-3-Ultra-550B-Instruct",
+      "context_length": 131072,
+      "max_output_tokens": 131072,
+      "input_modalities": [
+        "text"
+      ],
+      "output_modalities": [
+        "text"
+      ],
+      "pricing": {
+        "prompt": "0.0000009",
+        "completion": "0.0000017",
+        "input_cache_write": null,
+        "input_cache_read": null
+      },
+      "supported_sampling_parameters": [
+        "temperature",
+        "top_p",
+        "max_tokens",
+        "stop",
+        "frequency_penalty",
+        "presence_penalty",
+        "seed"
+      ],
+      "supported_features": [
+        "streaming",
+        "function_calling"
+      ],
+      "capacity_tpm": null,
+      "endpoint_template": "https://inference.do-ai.run/v1",
+      "do_owned_by": "digitalocean"
+    },
+    {
+      "id": "nemotron-nano-12b-v2-vl",
+      "name": "Nemotron Nano 12B v2 VL",
+      "hugging_face_id": "nvidia/Nemotron-Nano-12B-v2-VL",
+      "created": 1777025607,
+      "description": null,
+      "license": null,
+      "license_url": null,
+      "model_card": "https://huggingface.co/nvidia/Nemotron-Nano-12B-v2-VL",
+      "context_length": 128000,
+      "max_output_tokens": 16384,
+      "input_modalities": [
+        "text",
+        "image"
+      ],
+      "output_modalities": [
+        "text"
+      ],
+      "pricing": {
+        "prompt": "0.0000002",
+        "completion": "0.0000006",
+        "input_cache_write": null,
+        "input_cache_read": null
+      },
+      "supported_sampling_parameters": [
+        "temperature",
+        "top_p",
+        "max_tokens",
+        "stop",
+        "frequency_penalty",
+        "presence_penalty",
+        "seed"
+      ],
+      "supported_features": [
+        "streaming",
+        "function_calling",
+        "vision"
+      ],
+      "capacity_tpm": null,
+      "endpoint_template": "https://inference.do-ai.run/v1",
+      "do_owned_by": "digitalocean"
+    },
+    {
+      "id": "nvidia-nemotron-3-super-120b",
+      "name": "Nemotron 3 Super 120B",
+      "hugging_face_id": "nvidia/NVIDIA-Nemotron-3-Super-120B-Instruct",
+      "created": 1773783814,
+      "description": null,
+      "license": null,
+      "license_url": null,
+      "model_card": "https://huggingface.co/nvidia/NVIDIA-Nemotron-3-Super-120B-Instruct",
+      "context_length": 1000000,
+      "max_output_tokens": 32768,
+      "input_modalities": [
+        "text"
+      ],
+      "output_modalities": [
+        "text"
+      ],
+      "pricing": {
+        "prompt": "0.000000165",
+        "completion": "0.000000358",
+        "input_cache_write": null,
+        "input_cache_read": "0.00000006"
+      },
+      "supported_sampling_parameters": [
+        "temperature",
+        "top_p",
+        "max_tokens",
+        "stop",
+        "frequency_penalty",
+        "presence_penalty",
+        "seed"
+      ],
+      "supported_features": [
+        "prompt_caching",
+        "streaming",
+        "function_calling"
+      ],
+      "capacity_tpm": null,
+      "endpoint_template": "https://inference.do-ai.run/v1",
+      "do_owned_by": "digitalocean"
+    },
+    {
+      "id": "openai-gpt-4.1",
+      "name": "GPT-4.1",
+      "hugging_face_id": null,
+      "created": 1753359599,
+      "description": null,
+      "license": "OpenAI Terms of Use",
+      "license_url": "https://openai.com/policies/terms-of-use",
+      "model_card": null,
+      "context_length": 1047576,
+      "max_output_tokens": 32768,
+      "input_modalities": [
+        "text",
+        "image"
+      ],
+      "output_modalities": [
+        "text"
+      ],
+      "pricing": {
+        "prompt": "0.000002",
+        "completion": "0.000008",
+        "input_cache_write": null,
+        "input_cache_read": "0.0000005"
+      },
+      "supported_sampling_parameters": [
+        "temperature",
+        "top_p",
+        "max_tokens",
+        "stop",
+        "frequency_penalty",
+        "presence_penalty",
+        "seed"
+      ],
+      "supported_features": [
+        "prompt_caching",
+        "streaming",
+        "function_calling",
+        "vision"
+      ],
+      "capacity_tpm": null,
+      "endpoint_template": "https://inference.do-ai.run/v1",
+      "do_owned_by": "openai"
+    },
+    {
+      "id": "openai-gpt-4o",
+      "name": "GPT-4o",
+      "hugging_face_id": null,
+      "created": 1740436938,
+      "description": null,
+      "license": "OpenAI Terms of Use",
+      "license_url": "https://openai.com/policies/terms-of-use",
+      "model_card": null,
+      "context_length": 128000,
+      "max_output_tokens": 16384,
+      "input_modalities": [
+        "text",
+        "image"
+      ],
+      "output_modalities": [
+        "text"
+      ],
+      "pricing": {
+        "prompt": "0.0000025",
+        "completion": "0.00001",
+        "input_cache_write": null,
+        "input_cache_read": "0.00000125"
+      },
+      "supported_sampling_parameters": [
+        "temperature",
+        "top_p",
+        "max_tokens",
+        "stop",
+        "frequency_penalty",
+        "presence_penalty",
+        "seed"
+      ],
+      "supported_features": [
+        "prompt_caching",
+        "streaming",
+        "function_calling",
+        "vision"
+      ],
+      "capacity_tpm": null,
+      "endpoint_template": "https://inference.do-ai.run/v1",
+      "do_owned_by": "openai"
+    },
+    {
+      "id": "openai-gpt-4o-mini",
+      "name": "GPT-4o mini",
+      "hugging_face_id": null,
+      "created": 1740436938,
+      "description": null,
+      "license": "OpenAI Terms of Use",
+      "license_url": "https://openai.com/policies/terms-of-use",
+      "model_card": null,
+      "context_length": 128000,
+      "max_output_tokens": 16384,
+      "input_modalities": [
+        "text",
+        "image"
+      ],
+      "output_modalities": [
+        "text"
+      ],
+      "pricing": {
+        "prompt": "0.00000015",
+        "completion": "0.0000006",
+        "input_cache_write": null,
+        "input_cache_read": "0.000000075"
+      },
+      "supported_sampling_parameters": [
+        "temperature",
+        "top_p",
+        "max_tokens",
+        "stop",
+        "frequency_penalty",
+        "presence_penalty",
+        "seed"
+      ],
+      "supported_features": [
+        "prompt_caching",
+        "streaming",
+        "function_calling",
+        "vision"
+      ],
+      "capacity_tpm": null,
+      "endpoint_template": "https://inference.do-ai.run/v1",
+      "do_owned_by": "openai"
+    },
+    {
+      "id": "openai-gpt-5",
+      "name": "GPT-5",
+      "hugging_face_id": null,
+      "created": 1754595084,
+      "description": null,
+      "license": "OpenAI Terms of Use",
+      "license_url": "https://openai.com/policies/terms-of-use",
+      "model_card": null,
+      "context_length": 400000,
+      "max_output_tokens": 128000,
+      "input_modalities": [
+        "text",
+        "image"
+      ],
+      "output_modalities": [
+        "text"
+      ],
+      "pricing": {
+        "prompt": "0.00000125",
+        "completion": "0.00001",
+        "input_cache_write": null,
+        "input_cache_read": "0.000000125"
+      },
+      "supported_sampling_parameters": [
+        "temperature",
+        "top_p",
+        "max_tokens",
+        "stop",
+        "frequency_penalty",
+        "presence_penalty",
+        "seed"
+      ],
+      "supported_features": [
+        "prompt_caching",
+        "streaming",
+        "function_calling",
+        "vision"
+      ],
+      "capacity_tpm": null,
+      "endpoint_template": "https://inference.do-ai.run/v1",
+      "do_owned_by": "openai"
+    },
+    {
+      "id": "openai-gpt-5-mini",
+      "name": "GPT-5 mini",
+      "hugging_face_id": null,
+      "created": 1757445018,
+      "description": null,
+      "license": "OpenAI Terms of Use",
+      "license_url": "https://openai.com/policies/terms-of-use",
+      "model_card": null,
+      "context_length": 400000,
+      "max_output_tokens": 128000,
+      "input_modalities": [
+        "text",
+        "image"
+      ],
+      "output_modalities": [
+        "text"
+      ],
+      "pricing": {
+        "prompt": "0.00000025",
+        "completion": "0.000002",
+        "input_cache_write": null,
+        "input_cache_read": "0.000000025"
+      },
+      "supported_sampling_parameters": [
+        "temperature",
+        "top_p",
+        "max_tokens",
+        "stop",
+        "frequency_penalty",
+        "presence_penalty",
+        "seed"
+      ],
+      "supported_features": [
+        "prompt_caching",
+        "streaming",
+        "function_calling",
+        "vision"
+      ],
+      "capacity_tpm": null,
+      "endpoint_template": "https://inference.do-ai.run/v1",
+      "do_owned_by": "openai"
+    },
+    {
+      "id": "openai-gpt-5-nano",
+      "name": "GPT-5 nano",
+      "hugging_face_id": null,
+      "created": 1757445022,
+      "description": null,
+      "license": "OpenAI Terms of Use",
+      "license_url": "https://openai.com/policies/terms-of-use",
+      "model_card": null,
+      "context_length": 400000,
+      "max_output_tokens": 128000,
+      "input_modalities": [
+        "text",
+        "image"
+      ],
+      "output_modalities": [
+        "text"
+      ],
+      "pricing": {
+        "prompt": "0.00000005",
+        "completion": "0.0000004",
+        "input_cache_write": null,
+        "input_cache_read": "0.000000005"
+      },
+      "supported_sampling_parameters": [
+        "temperature",
+        "top_p",
+        "max_tokens",
+        "stop",
+        "frequency_penalty",
+        "presence_penalty",
+        "seed"
+      ],
+      "supported_features": [
+        "prompt_caching",
+        "streaming",
+        "function_calling",
+        "vision"
+      ],
+      "capacity_tpm": null,
+      "endpoint_template": "https://inference.do-ai.run/v1",
+      "do_owned_by": "openai"
+    },
+    {
+      "id": "openai-gpt-5.2",
+      "name": "GPT-5.2",
+      "hugging_face_id": null,
+      "created": 1769527931,
+      "description": null,
+      "license": "OpenAI Terms of Use",
+      "license_url": "https://openai.com/policies/terms-of-use",
+      "model_card": null,
+      "context_length": 400000,
+      "max_output_tokens": 128000,
+      "input_modalities": [
+        "text",
+        "image"
+      ],
+      "output_modalities": [
+        "text"
+      ],
+      "pricing": {
+        "prompt": "0.00000175",
+        "completion": "0.000014",
+        "input_cache_write": null,
+        "input_cache_read": "0.000000175"
+      },
+      "supported_sampling_parameters": [
+        "temperature",
+        "top_p",
+        "max_tokens",
+        "stop",
+        "frequency_penalty",
+        "presence_penalty",
+        "seed"
+      ],
+      "supported_features": [
+        "prompt_caching",
+        "streaming",
+        "function_calling",
+        "vision"
+      ],
+      "capacity_tpm": null,
+      "endpoint_template": "https://inference.do-ai.run/v1",
+      "do_owned_by": "openai"
+    },
+    {
+      "id": "openai-gpt-5.2-pro",
+      "name": "GPT-5.2 Pro",
+      "hugging_face_id": null,
+      "created": 1770208836,
+      "description": null,
+      "license": "OpenAI Terms of Use",
+      "license_url": "https://openai.com/policies/terms-of-use",
+      "model_card": null,
+      "context_length": 400000,
+      "max_output_tokens": 128000,
+      "input_modalities": [
+        "text",
+        "image"
+      ],
+      "output_modalities": [
+        "text"
+      ],
+      "pricing": {
+        "prompt": "0.000021",
+        "completion": "0.000168",
+        "input_cache_write": null,
+        "input_cache_read": null
+      },
+      "supported_sampling_parameters": [
+        "temperature",
+        "top_p",
+        "max_tokens",
+        "stop",
+        "frequency_penalty",
+        "presence_penalty",
+        "seed"
+      ],
+      "supported_features": [
+        "prompt_caching",
+        "streaming",
+        "function_calling",
+        "vision"
+      ],
+      "capacity_tpm": null,
+      "endpoint_template": "https://inference.do-ai.run/v1",
+      "do_owned_by": "openai"
+    },
+    {
+      "id": "openai-gpt-5.3-codex",
+      "name": "GPT-5.3 Codex",
+      "hugging_face_id": null,
+      "created": 1772046998,
+      "description": null,
+      "license": "OpenAI Terms of Use",
+      "license_url": "https://openai.com/policies/terms-of-use",
+      "model_card": null,
+      "context_length": 400000,
+      "max_output_tokens": 128000,
+      "input_modalities": [
+        "text",
+        "image"
+      ],
+      "output_modalities": [
+        "text"
+      ],
+      "pricing": {
+        "prompt": "0.00000175",
+        "completion": "0.000014",
+        "input_cache_write": null,
+        "input_cache_read": "0.000000175"
+      },
+      "supported_sampling_parameters": [
+        "temperature",
+        "top_p",
+        "max_tokens",
+        "stop",
+        "frequency_penalty",
+        "presence_penalty",
+        "seed"
+      ],
+      "supported_features": [
+        "prompt_caching",
+        "streaming",
+        "function_calling",
+        "vision"
+      ],
+      "capacity_tpm": null,
+      "endpoint_template": "https://inference.do-ai.run/v1",
+      "do_owned_by": "openai"
+    },
+    {
+      "id": "openai-gpt-5.4",
+      "name": "GPT-5.4",
+      "hugging_face_id": null,
+      "created": 1772819368,
+      "description": null,
+      "license": "OpenAI Terms of Use",
+      "license_url": "https://openai.com/policies/terms-of-use",
+      "model_card": null,
+      "context_length": 400000,
+      "max_output_tokens": 128000,
+      "input_modalities": [
+        "text",
+        "image"
+      ],
+      "output_modalities": [
+        "text"
+      ],
+      "pricing": {
+        "prompt": "0.0000025",
+        "completion": "0.000015",
+        "input_cache_write": null,
+        "input_cache_read": "0.00000025"
+      },
+      "supported_sampling_parameters": [
+        "temperature",
+        "top_p",
+        "max_tokens",
+        "stop",
+        "frequency_penalty",
+        "presence_penalty",
+        "seed"
+      ],
+      "supported_features": [
+        "prompt_caching",
+        "streaming",
+        "function_calling",
+        "vision"
+      ],
+      "capacity_tpm": null,
+      "endpoint_template": "https://inference.do-ai.run/v1",
+      "do_owned_by": "openai"
+    },
+    {
+      "id": "openai-gpt-5.4-mini",
+      "name": "GPT-5.4 mini",
+      "hugging_face_id": null,
+      "created": 1774645563,
+      "description": null,
+      "license": "OpenAI Terms of Use",
+      "license_url": "https://openai.com/policies/terms-of-use",
+      "model_card": null,
+      "context_length": 400000,
+      "max_output_tokens": 128000,
+      "input_modalities": [
+        "text",
+        "image"
+      ],
+      "output_modalities": [
+        "text"
+      ],
+      "pricing": {
+        "prompt": "0.00000075",
+        "completion": "0.0000045",
+        "input_cache_write": null,
+        "input_cache_read": "0.000000075"
+      },
+      "supported_sampling_parameters": [
+        "temperature",
+        "top_p",
+        "max_tokens",
+        "stop",
+        "frequency_penalty",
+        "presence_penalty",
+        "seed"
+      ],
+      "supported_features": [
+        "prompt_caching",
+        "streaming",
+        "function_calling",
+        "vision"
+      ],
+      "capacity_tpm": null,
+      "endpoint_template": "https://inference.do-ai.run/v1",
+      "do_owned_by": "openai"
+    },
+    {
+      "id": "openai-gpt-5.4-nano",
+      "name": "GPT-5.4 nano",
+      "hugging_face_id": null,
+      "created": 1774645564,
+      "description": null,
+      "license": "OpenAI Terms of Use",
+      "license_url": "https://openai.com/policies/terms-of-use",
+      "model_card": null,
+      "context_length": 400000,
+      "max_output_tokens": 128000,
+      "input_modalities": [
+        "text",
+        "image"
+      ],
+      "output_modalities": [
+        "text"
+      ],
+      "pricing": {
+        "prompt": "0.0000002",
+        "completion": "0.00000125",
+        "input_cache_write": null,
+        "input_cache_read": "0.00000002"
+      },
+      "supported_sampling_parameters": [
+        "temperature",
+        "top_p",
+        "max_tokens",
+        "stop",
+        "frequency_penalty",
+        "presence_penalty",
+        "seed"
+      ],
+      "supported_features": [
+        "prompt_caching",
+        "streaming",
+        "function_calling",
+        "vision"
+      ],
+      "capacity_tpm": null,
+      "endpoint_template": "https://inference.do-ai.run/v1",
+      "do_owned_by": "openai"
+    },
+    {
+      "id": "openai-gpt-5.4-pro",
+      "name": "GPT-5.4 Pro",
+      "hugging_face_id": null,
+      "created": 1774645563,
+      "description": null,
+      "license": "OpenAI Terms of Use",
+      "license_url": "https://openai.com/policies/terms-of-use",
+      "model_card": null,
+      "context_length": 1050000,
+      "max_output_tokens": 128000,
+      "input_modalities": [
+        "text",
+        "image"
+      ],
+      "output_modalities": [
+        "text"
+      ],
+      "pricing": {
+        "prompt": "0.00003",
+        "completion": "0.00018",
+        "input_cache_write": null,
+        "input_cache_read": null
+      },
+      "supported_sampling_parameters": [
+        "temperature",
+        "top_p",
+        "max_tokens",
+        "stop",
+        "frequency_penalty",
+        "presence_penalty",
+        "seed"
+      ],
+      "supported_features": [
+        "prompt_caching",
+        "streaming",
+        "function_calling",
+        "vision"
+      ],
+      "capacity_tpm": null,
+      "endpoint_template": "https://inference.do-ai.run/v1",
+      "do_owned_by": "openai"
+    },
+    {
+      "id": "openai-gpt-5.5",
+      "name": "GPT-5.5",
+      "hugging_face_id": null,
+      "created": 1777317140,
+      "description": null,
+      "license": "OpenAI Terms of Use",
+      "license_url": "https://openai.com/policies/terms-of-use",
+      "model_card": null,
+      "context_length": 1000000,
+      "max_output_tokens": 128000,
+      "input_modalities": [
+        "text",
+        "image"
+      ],
+      "output_modalities": [
+        "text"
+      ],
+      "pricing": {
+        "prompt": "0.000005",
+        "completion": "0.00003",
+        "input_cache_write": null,
+        "input_cache_read": "0.0000005"
+      },
+      "supported_sampling_parameters": [
+        "temperature",
+        "top_p",
+        "max_tokens",
+        "stop",
+        "frequency_penalty",
+        "presence_penalty",
+        "seed"
+      ],
+      "supported_features": [
+        "prompt_caching",
+        "streaming",
+        "function_calling",
+        "vision"
+      ],
+      "capacity_tpm": null,
+      "endpoint_template": "https://inference.do-ai.run/v1",
+      "do_owned_by": "openai"
+    },
+    {
+      "id": "openai-gpt-5.6-luna",
+      "name": "GPT-5.6 Luna",
+      "hugging_face_id": null,
+      "created": 1783634907,
+      "description": null,
+      "license": "OpenAI Terms of Use",
+      "license_url": "https://openai.com/policies/terms-of-use",
+      "model_card": null,
+      "context_length": 1050000,
+      "max_output_tokens": 128000,
+      "input_modalities": [
+        "text",
+        "image"
+      ],
+      "output_modalities": [
+        "text"
+      ],
+      "pricing": {
+        "prompt": "0.0000002",
+        "completion": "0.0000012",
+        "input_cache_write": "0.00000025",
+        "input_cache_read": "0.00000002"
+      },
+      "supported_sampling_parameters": [
+        "temperature",
+        "top_p",
+        "max_tokens",
+        "stop",
+        "frequency_penalty",
+        "presence_penalty",
+        "seed"
+      ],
+      "supported_features": [
+        "prompt_caching",
+        "streaming",
+        "function_calling",
+        "vision"
+      ],
+      "capacity_tpm": null,
+      "endpoint_template": "https://inference.do-ai.run/v1",
+      "do_owned_by": "openai"
+    },
+    {
+      "id": "openai-gpt-5.6-sol",
+      "name": "GPT-5.6 Sol",
+      "hugging_face_id": null,
+      "created": 1783716594,
+      "description": null,
+      "license": "OpenAI Terms of Use",
+      "license_url": "https://openai.com/policies/terms-of-use",
+      "model_card": null,
+      "context_length": 1050000,
+      "max_output_tokens": 128000,
+      "input_modalities": [
+        "text",
+        "image"
+      ],
+      "output_modalities": [
+        "text"
+      ],
+      "pricing": {
+        "prompt": "0.000005",
+        "completion": "0.00003",
+        "input_cache_write": "0.00000625",
+        "input_cache_read": "0.0000005"
+      },
+      "supported_sampling_parameters": [
+        "temperature",
+        "top_p",
+        "max_tokens",
+        "stop",
+        "frequency_penalty",
+        "presence_penalty",
+        "seed"
+      ],
+      "supported_features": [
+        "prompt_caching",
+        "streaming",
+        "function_calling",
+        "vision"
+      ],
+      "capacity_tpm": null,
+      "endpoint_template": "https://inference.do-ai.run/v1",
+      "do_owned_by": "openai"
+    },
+    {
+      "id": "openai-gpt-5.6-terra",
+      "name": "GPT-5.6 Terra",
+      "hugging_face_id": null,
+      "created": 1783716611,
+      "description": null,
+      "license": "OpenAI Terms of Use",
+      "license_url": "https://openai.com/policies/terms-of-use",
+      "model_card": null,
+      "context_length": 1050000,
+      "max_output_tokens": 128000,
+      "input_modalities": [
+        "text",
+        "image"
+      ],
+      "output_modalities": [
+        "text"
+      ],
+      "pricing": {
+        "prompt": "0.000002",
+        "completion": "0.000012",
+        "input_cache_write": "0.0000025",
+        "input_cache_read": "0.0000002"
+      },
+      "supported_sampling_parameters": [
+        "temperature",
+        "top_p",
+        "max_tokens",
+        "stop",
+        "frequency_penalty",
+        "presence_penalty",
+        "seed"
+      ],
+      "supported_features": [
+        "prompt_caching",
+        "streaming",
+        "function_calling",
+        "vision"
+      ],
+      "capacity_tpm": null,
+      "endpoint_template": "https://inference.do-ai.run/v1",
+      "do_owned_by": "openai"
+    },
+    {
+      "id": "openai-gpt-image-1",
+      "name": "GPT Image 1",
+      "hugging_face_id": null,
+      "created": 1759330300,
+      "description": null,
+      "license": "OpenAI Terms of Use",
+      "license_url": "https://openai.com/policies/terms-of-use",
+      "model_card": null,
+      "context_length": null,
+      "max_output_tokens": 16384,
+      "input_modalities": [
+        "text",
+        "image"
+      ],
+      "output_modalities": [
+        "image"
+      ],
+      "pricing": {
+        "prompt": "0.000005",
+        "completion": "0.00004",
+        "input_cache_write": null,
+        "input_cache_read": "0.00000125"
+      },
+      "supported_sampling_parameters": [],
+      "supported_features": [
+        "streaming"
+      ],
+      "capacity_tpm": null,
+      "endpoint_template": "https://inference.do-ai.run/v1",
+      "do_owned_by": "openai"
+    },
+    {
+      "id": "openai-gpt-image-1.5",
+      "name": "GPT Image 1.5",
+      "hugging_face_id": null,
+      "created": 1774645563,
+      "description": null,
+      "license": "OpenAI Terms of Use",
+      "license_url": "https://openai.com/policies/terms-of-use",
+      "model_card": null,
+      "context_length": null,
+      "max_output_tokens": 16384,
+      "input_modalities": [
+        "text",
+        "image"
+      ],
+      "output_modalities": [
+        "image"
+      ],
+      "pricing": {
+        "prompt": "0.000005",
+        "completion": "0.00001",
+        "input_cache_write": null,
+        "input_cache_read": "0.000001"
+      },
+      "supported_sampling_parameters": [],
+      "supported_features": [
+        "streaming"
+      ],
+      "capacity_tpm": null,
+      "endpoint_template": "https://inference.do-ai.run/v1",
+      "do_owned_by": "openai"
+    },
+    {
+      "id": "openai-gpt-image-2",
+      "name": "GPT Image 2",
+      "hugging_face_id": null,
+      "created": 1776952170,
+      "description": null,
+      "license": "OpenAI Terms of Use",
+      "license_url": "https://openai.com/policies/terms-of-use",
+      "model_card": null,
+      "context_length": null,
+      "max_output_tokens": 16384,
+      "input_modalities": [
+        "text",
+        "image"
+      ],
+      "output_modalities": [
+        "image"
+      ],
+      "pricing": {
+        "prompt": "0.000005",
+        "completion": null,
+        "input_cache_write": null,
+        "input_cache_read": "0.00000125"
+      },
+      "supported_sampling_parameters": [],
+      "supported_features": [
+        "streaming"
+      ],
+      "capacity_tpm": null,
+      "endpoint_template": "https://inference.do-ai.run/v1",
+      "do_owned_by": "openai"
+    },
+    {
+      "id": "openai-gpt-oss-120b",
+      "name": "GPT OSS 120B",
+      "hugging_face_id": "openai/gpt-oss-120b",
+      "created": 1754595080,
+      "description": null,
+      "license": "OpenAI Terms of Use",
+      "license_url": "https://openai.com/policies/terms-of-use",
+      "model_card": "https://huggingface.co/openai/gpt-oss-120b",
+      "context_length": 128000,
+      "max_output_tokens": 4096,
+      "input_modalities": [
+        "text"
+      ],
+      "output_modalities": [
+        "text"
+      ],
+      "pricing": {
+        "prompt": "0.0000001",
+        "completion": "0.0000007",
+        "input_cache_write": null,
+        "input_cache_read": null
+      },
+      "supported_sampling_parameters": [
+        "temperature",
+        "top_p",
+        "max_tokens",
+        "stop",
+        "frequency_penalty",
+        "presence_penalty",
+        "seed"
+      ],
+      "supported_features": [
+        "prompt_caching",
+        "streaming",
+        "function_calling"
+      ],
+      "capacity_tpm": null,
+      "endpoint_template": "https://inference.do-ai.run/v1",
+      "do_owned_by": "digitalocean"
+    },
+    {
+      "id": "openai-gpt-oss-20b",
+      "name": "GPT OSS 20B",
+      "hugging_face_id": "openai/gpt-oss-20b",
+      "created": 1754595075,
+      "description": null,
+      "license": "OpenAI Terms of Use",
+      "license_url": "https://openai.com/policies/terms-of-use",
+      "model_card": "https://huggingface.co/openai/gpt-oss-20b",
+      "context_length": 128000,
+      "max_output_tokens": 4096,
+      "input_modalities": [
+        "text"
+      ],
+      "output_modalities": [
+        "text"
+      ],
+      "pricing": {
+        "prompt": "0.00000005",
+        "completion": "0.00000045",
+        "input_cache_write": null,
+        "input_cache_read": null
+      },
+      "supported_sampling_parameters": [
+        "temperature",
+        "top_p",
+        "max_tokens",
+        "stop",
+        "frequency_penalty",
+        "presence_penalty",
+        "seed"
+      ],
+      "supported_features": [
+        "streaming",
+        "function_calling"
+      ],
+      "capacity_tpm": null,
+      "endpoint_template": "https://inference.do-ai.run/v1",
+      "do_owned_by": "digitalocean"
+    },
+    {
+      "id": "openai-o1",
+      "name": "o1",
+      "hugging_face_id": null,
+      "created": 1740436938,
+      "description": null,
+      "license": "OpenAI Terms of Use",
+      "license_url": "https://openai.com/policies/terms-of-use",
+      "model_card": null,
+      "context_length": 200000,
+      "max_output_tokens": 100000,
+      "input_modalities": [
+        "text",
+        "image"
+      ],
+      "output_modalities": [
+        "text"
+      ],
+      "pricing": {
+        "prompt": "0.000015",
+        "completion": "0.00006",
+        "input_cache_write": null,
+        "input_cache_read": "0.0000075"
+      },
+      "supported_sampling_parameters": [
+        "temperature",
+        "top_p",
+        "max_tokens",
+        "stop",
+        "frequency_penalty",
+        "presence_penalty",
+        "seed"
+      ],
+      "supported_features": [
+        "prompt_caching",
+        "streaming",
+        "function_calling",
+        "vision"
+      ],
+      "capacity_tpm": null,
+      "endpoint_template": "https://inference.do-ai.run/v1",
+      "do_owned_by": "openai"
+    },
+    {
+      "id": "openai-o3",
+      "name": "o3",
+      "hugging_face_id": null,
+      "created": 1751565087,
+      "description": null,
+      "license": "OpenAI Terms of Use",
+      "license_url": "https://openai.com/policies/terms-of-use",
+      "model_card": null,
+      "context_length": 200000,
+      "max_output_tokens": 100000,
+      "input_modalities": [
+        "text",
+        "image"
+      ],
+      "output_modalities": [
+        "text"
+      ],
+      "pricing": {
+        "prompt": "0.000002",
+        "completion": "0.000008",
+        "input_cache_write": null,
+        "input_cache_read": "0.0000005"
+      },
+      "supported_sampling_parameters": [
+        "temperature",
+        "top_p",
+        "max_tokens",
+        "stop",
+        "frequency_penalty",
+        "presence_penalty",
+        "seed"
+      ],
+      "supported_features": [
+        "prompt_caching",
+        "streaming",
+        "function_calling",
+        "vision"
+      ],
+      "capacity_tpm": null,
+      "endpoint_template": "https://inference.do-ai.run/v1",
+      "do_owned_by": "openai"
+    },
+    {
+      "id": "openai-o3-mini",
+      "name": "o3-mini",
+      "hugging_face_id": null,
+      "created": 1740436938,
+      "description": null,
+      "license": "OpenAI Terms of Use",
+      "license_url": "https://openai.com/policies/terms-of-use",
+      "model_card": null,
+      "context_length": 200000,
+      "max_output_tokens": 100000,
+      "input_modalities": [
+        "text"
+      ],
+      "output_modalities": [
+        "text"
+      ],
+      "pricing": {
+        "prompt": "0.0000011",
+        "completion": "0.0000044",
+        "input_cache_write": null,
+        "input_cache_read": "0.00000055"
+      },
+      "supported_sampling_parameters": [
+        "temperature",
+        "top_p",
+        "max_tokens",
+        "stop",
+        "frequency_penalty",
+        "presence_penalty",
+        "seed"
+      ],
+      "supported_features": [
+        "prompt_caching",
+        "streaming",
+        "function_calling"
+      ],
+      "capacity_tpm": null,
+      "endpoint_template": "https://inference.do-ai.run/v1",
+      "do_owned_by": "openai"
+    },
+    {
+      "id": "qwen3-coder-flash",
+      "name": "Qwen3 Coder Flash",
+      "hugging_face_id": "Qwen/Qwen3-Coder",
+      "created": 1776366668,
+      "description": null,
+      "license": null,
+      "license_url": null,
+      "model_card": "https://huggingface.co/Qwen/Qwen3-Coder",
+      "context_length": 262144,
+      "max_output_tokens": 262144,
+      "input_modalities": [
+        "text"
+      ],
+      "output_modalities": [
+        "text"
+      ],
+      "pricing": {
+        "prompt": "0.00000045",
+        "completion": "0.0000017",
+        "input_cache_write": null,
+        "input_cache_read": "0.00000009"
+      },
+      "supported_sampling_parameters": [
+        "temperature",
+        "top_p",
+        "max_tokens",
+        "stop",
+        "frequency_penalty",
+        "presence_penalty",
+        "seed"
+      ],
+      "supported_features": [
+        "prompt_caching",
+        "streaming",
+        "function_calling"
+      ],
+      "capacity_tpm": null,
+      "endpoint_template": "https://inference.do-ai.run/v1",
+      "do_owned_by": "digitalocean"
+    },
+    {
+      "id": "qwen3-embedding-0.6b",
+      "name": "Qwen3 Embedding 0.6B",
+      "hugging_face_id": "Qwen/Qwen3-Embedding-0.6B",
+      "created": 1765803500,
+      "description": null,
+      "license": null,
+      "license_url": null,
+      "model_card": "https://huggingface.co/Qwen/Qwen3-Embedding-0.6B",
+      "context_length": null,
+      "max_output_tokens": null,
+      "input_modalities": [
+        "text"
+      ],
+      "output_modalities": [
+        "embedding"
+      ],
+      "pricing": {
+        "prompt": null,
+        "completion": null,
+        "input_cache_write": null,
+        "input_cache_read": null
+      },
+      "supported_sampling_parameters": [],
+      "supported_features": [
+        "streaming"
+      ],
+      "capacity_tpm": null,
+      "endpoint_template": "https://inference.do-ai.run/v1",
+      "do_owned_by": "digitalocean"
+    },
+    {
+      "id": "qwen3-tts-voicedesign",
+      "name": "Qwen3 TTS VoiceDesign",
+      "hugging_face_id": "fal-ai/qwen-3-tts",
+      "created": 1776717589,
+      "description": null,
+      "license": null,
+      "license_url": null,
+      "model_card": "https://huggingface.co/fal-ai/qwen-3-tts",
+      "context_length": 32768,
+      "max_output_tokens": 1,
+      "input_modalities": [
+        "text"
+      ],
+      "output_modalities": [
+        "audio"
+      ],
+      "pricing": {
+        "prompt": null,
+        "completion": null,
+        "input_cache_write": null,
+        "input_cache_read": null
+      },
+      "supported_sampling_parameters": [],
+      "supported_features": [
+        "streaming"
+      ],
+      "capacity_tpm": null,
+      "endpoint_template": "https://inference.do-ai.run/v1",
+      "do_owned_by": "digitalocean"
+    },
+    {
+      "id": "qwen3.5-397b-a17b",
+      "name": "Qwen3.5 397B A17B",
+      "hugging_face_id": "Qwen/Qwen3.5-397B-A17B",
+      "created": 1776379991,
+      "description": null,
+      "license": null,
+      "license_url": null,
+      "model_card": "https://huggingface.co/Qwen/Qwen3.5-397B-A17B",
+      "context_length": 131072,
+      "max_output_tokens": 131072,
+      "input_modalities": [
+        "text"
+      ],
+      "output_modalities": [
+        "text"
+      ],
+      "pricing": {
+        "prompt": "0.000000302",
+        "completion": "0.000001925",
+        "input_cache_write": null,
+        "input_cache_read": "0.000000111"
+      },
+      "supported_sampling_parameters": [
+        "temperature",
+        "top_p",
+        "max_tokens",
+        "stop",
+        "frequency_penalty",
+        "presence_penalty",
+        "seed"
+      ],
+      "supported_features": [
+        "prompt_caching",
+        "streaming",
+        "function_calling"
+      ],
+      "capacity_tpm": null,
+      "endpoint_template": "https://inference.do-ai.run/v1",
+      "do_owned_by": "digitalocean"
+    },
+    {
+      "id": "qwen3.8-max",
+      "name": "Qwen3.8 Max (2.4T A95B)",
+      "hugging_face_id": "Inferact/Qwen3.8",
+      "created": 1786486297,
+      "description": null,
+      "license": null,
+      "license_url": null,
+      "model_card": "https://huggingface.co/Inferact/Qwen3.8",
+      "context_length": 262144,
+      "max_output_tokens": 262144,
+      "input_modalities": [
+        "text"
+      ],
+      "output_modalities": [
+        "text"
+      ],
+      "pricing": {
+        "prompt": "0.000002",
+        "completion": "0.000006",
+        "input_cache_write": null,
+        "input_cache_read": "0.0000002"
+      },
+      "supported_sampling_parameters": [
+        "temperature",
+        "top_p",
+        "max_tokens",
+        "stop",
+        "frequency_penalty",
+        "presence_penalty",
+        "seed"
+      ],
+      "supported_features": [
+        "prompt_caching",
+        "streaming",
+        "function_calling"
+      ],
+      "capacity_tpm": null,
+      "endpoint_template": "https://inference.do-ai.run/v1",
+      "do_owned_by": "digitalocean"
+    },
+    {
+      "id": "router:general",
+      "name": "DO Router: General",
+      "hugging_face_id": null,
+      "created": 1775748006,
+      "description": null,
+      "license": null,
+      "license_url": null,
+      "model_card": null,
+      "context_length": null,
+      "max_output_tokens": null,
+      "input_modalities": [
+        "text"
+      ],
+      "output_modalities": [
+        "text"
+      ],
+      "pricing": {
+        "prompt": null,
+        "completion": null,
+        "input_cache_write": null,
+        "input_cache_read": null
+      },
+      "supported_sampling_parameters": [
+        "temperature",
+        "top_p",
+        "max_tokens",
+        "stop",
+        "frequency_penalty",
+        "presence_penalty",
+        "seed"
+      ],
+      "supported_features": [
+        "streaming"
+      ],
+      "capacity_tpm": null,
+      "endpoint_template": "https://inference.do-ai.run/v1",
+      "do_owned_by": "digitalocean"
+    },
+    {
+      "id": "router:knowledge-base-document",
+      "name": "DO Router: Knowledge Base / Document",
+      "hugging_face_id": null,
+      "created": 1776390534,
+      "description": null,
+      "license": null,
+      "license_url": null,
+      "model_card": null,
+      "context_length": null,
+      "max_output_tokens": null,
+      "input_modalities": [
+        "text"
+      ],
+      "output_modalities": [
+        "text"
+      ],
+      "pricing": {
+        "prompt": null,
+        "completion": null,
+        "input_cache_write": null,
+        "input_cache_read": null
+      },
+      "supported_sampling_parameters": [
+        "temperature",
+        "top_p",
+        "max_tokens",
+        "stop",
+        "frequency_penalty",
+        "presence_penalty",
+        "seed"
+      ],
+      "supported_features": [
+        "streaming"
+      ],
+      "capacity_tpm": null,
+      "endpoint_template": "https://inference.do-ai.run/v1",
+      "do_owned_by": "digitalocean"
+    },
+    {
+      "id": "router:software-engineering",
+      "name": "DO Router: Software Engineering",
+      "hugging_face_id": null,
+      "created": 1775748006,
+      "description": null,
+      "license": null,
+      "license_url": null,
+      "model_card": null,
+      "context_length": null,
+      "max_output_tokens": null,
+      "input_modalities": [
+        "text"
+      ],
+      "output_modalities": [
+        "text"
+      ],
+      "pricing": {
+        "prompt": null,
+        "completion": null,
+        "input_cache_write": null,
+        "input_cache_read": null
+      },
+      "supported_sampling_parameters": [
+        "temperature",
+        "top_p",
+        "max_tokens",
+        "stop",
+        "frequency_penalty",
+        "presence_penalty",
+        "seed"
+      ],
+      "supported_features": [
+        "streaming"
+      ],
+      "capacity_tpm": null,
+      "endpoint_template": "https://inference.do-ai.run/v1",
+      "do_owned_by": "digitalocean"
+    },
+    {
+      "id": "router:writing",
+      "name": "DO Router: Writing",
+      "hugging_face_id": null,
+      "created": 1775748006,
+      "description": null,
+      "license": null,
+      "license_url": null,
+      "model_card": null,
+      "context_length": null,
+      "max_output_tokens": null,
+      "input_modalities": [
+        "text"
+      ],
+      "output_modalities": [
+        "text"
+      ],
+      "pricing": {
+        "prompt": null,
+        "completion": null,
+        "input_cache_write": null,
+        "input_cache_read": null
+      },
+      "supported_sampling_parameters": [
+        "temperature",
+        "top_p",
+        "max_tokens",
+        "stop",
+        "frequency_penalty",
+        "presence_penalty",
+        "seed"
+      ],
+      "supported_features": [
+        "streaming"
+      ],
+      "capacity_tpm": null,
+      "endpoint_template": "https://inference.do-ai.run/v1",
+      "do_owned_by": "digitalocean"
+    },
+    {
+      "id": "stable-diffusion-3.5-large",
+      "name": "Stable Diffusion 3.5 Large",
+      "hugging_face_id": "fal-ai/stable-diffusion-v35-large",
+      "created": 1776529563,
+      "description": null,
+      "license": null,
+      "license_url": null,
+      "model_card": "https://huggingface.co/fal-ai/stable-diffusion-v35-large",
+      "context_length": 256,
+      "max_output_tokens": 1,
+      "input_modalities": [
+        "text"
+      ],
+      "output_modalities": [
+        "image"
+      ],
+      "pricing": {
+        "prompt": null,
+        "completion": null,
+        "input_cache_write": null,
+        "input_cache_read": null
+      },
+      "supported_sampling_parameters": [],
+      "supported_features": [
+        "streaming"
+      ],
+      "capacity_tpm": null,
+      "endpoint_template": "https://inference.do-ai.run/v1",
+      "do_owned_by": "digitalocean"
+    },
+    {
+      "id": "wan2-2-t2v-a14b",
+      "name": "Wan2.2 T2V A14B",
+      "hugging_face_id": "fal-ai/wan",
+      "created": 1776464527,
+      "description": null,
+      "license": null,
+      "license_url": null,
+      "model_card": "https://huggingface.co/fal-ai/wan",
+      "context_length": 100,
+      "max_output_tokens": 1,
+      "input_modalities": [
+        "text"
+      ],
+      "output_modalities": [
+        "video"
+      ],
+      "pricing": {
+        "prompt": null,
+        "completion": null,
+        "input_cache_write": null,
+        "input_cache_read": null
+      },
+      "supported_sampling_parameters": [],
+      "supported_features": [
+        "streaming"
+      ],
+      "capacity_tpm": null,
+      "endpoint_template": "https://inference.do-ai.run/v1",
+      "do_owned_by": "digitalocean"
+    }
+  ]
+}

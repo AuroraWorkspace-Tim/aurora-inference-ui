@@ -1,17 +1,1050 @@
 [
-  {"id":"m-001","name":"DeepSeek V4 Flash","provider":"DeepSeek","modality":"text","context_length":524288,"price_per_1k_input":0.00014,"price_per_1k_output":0.00028,"description":"Ultra-fast reasoning model with 524k context. Best for coding, analysis, and complex reasoning tasks.","tags":["reasoning","fast","long-context"]},
-  {"id":"m-002","name":"Llama 3.1 70B Instruct","provider":"Meta","modality":"text","context_length":131072,"price_per_1k_input":0.00052,"price_per_1k_output":0.00075,"description":"Meta's flagship open-weight instruction model. Excellent general-purpose assistant with strong reasoning.","tags":["open-source","general","instruction"]},
-  {"id":"m-003","name":"Mistral Large 2411","provider":"Mistral AI","modality":"text","context_length":131072,"price_per_1k_input":0.00200,"price_per_1k_output":0.00600,"description":"Mistral's most capable model. Excels at complex multilingual tasks, reasoning, and code generation.","tags":["multilingual","reasoning","enterprise"]},
-  {"id":"m-004","name":"Qwen2.5 72B Instruct","provider":"Alibaba Cloud","modality":"code","context_length":131072,"price_per_1k_input":0.00038,"price_per_1k_output":0.00055,"description":"Top-ranked open-weight model for coding tasks. Supports 92 programming languages.","tags":["code","open-source","multilingual"]},
-  {"id":"m-005","name":"Gemma 3 27B IT","provider":"Google","modality":"text","context_length":131072,"price_per_1k_input":0.00018,"price_per_1k_output":0.00028,"description":"Google's efficient open model. Strong instruction following with multimodal capabilities.","tags":["efficient","google","open-source"]},
-  {"id":"m-006","name":"Phi-4 Mini Instruct","provider":"Microsoft","modality":"code","context_length":16384,"price_per_1k_input":0.00010,"price_per_1k_output":0.00040,"description":"Microsoft's compact but powerful model. Optimized for reasoning and STEM tasks at minimal cost.","tags":["small","efficient","reasoning","code"]},
-  {"id":"m-007","name":"FLUX.1 Schnell","provider":"Black Forest Labs","modality":"image","context_length":0,"price_per_1k_input":0.00300,"price_per_1k_output":0.00300,"description":"Lightning-fast image generation model. 4-step diffusion process for real-time image synthesis.","tags":["image-generation","fast","diffusion"]},
-  {"id":"m-008","name":"FLUX.1 Dev","provider":"Black Forest Labs","modality":"image","context_length":0,"price_per_1k_input":0.02500,"price_per_1k_output":0.02500,"description":"High-quality image generation for commercial use. Exceptional prompt adherence and detail.","tags":["image-generation","high-quality","commercial"]},
-  {"id":"m-009","name":"Stable Diffusion 3.5 Large","provider":"Stability AI","modality":"image","context_length":0,"price_per_1k_input":0.06500,"price_per_1k_output":0.06500,"description":"State-of-the-art text-to-image model with superior typography and photorealism.","tags":["image-generation","photorealistic","typography"]},
-  {"id":"m-010","name":"Whisper Large V3","provider":"OpenAI","modality":"audio","context_length":0,"price_per_1k_input":0.00600,"price_per_1k_output":0.00600,"description":"Best-in-class speech recognition. Supports 99 languages with high accuracy transcription.","tags":["speech-to-text","multilingual","transcription"]},
-  {"id":"m-011","name":"Llama 3.2 11B Vision","provider":"Meta","modality":"image","context_length":131072,"price_per_1k_input":0.00018,"price_per_1k_output":0.00018,"description":"Multimodal vision-language model. Understands images and text together for visual reasoning.","tags":["vision","multimodal","open-source"]},
-  {"id":"m-012","name":"CodeLlama 70B Instruct","provider":"Meta","modality":"code","context_length":100000,"price_per_1k_input":0.00090,"price_per_1k_output":0.00090,"description":"Specialized code generation model supporting 100k context. Infill, completion, and instruction modes.","tags":["code","completion","infill"]},
-  {"id":"m-013","name":"Moshi","provider":"Kyutai","modality":"audio","context_length":0,"price_per_1k_input":0.01200,"price_per_1k_output":0.01200,"description":"Real-time speech-to-speech conversational AI. Sub-200ms latency for natural dialogue.","tags":["speech-to-speech","real-time","conversational"]},
-  {"id":"m-014","name":"CogVideoX-5B","provider":"Zhipu AI","modality":"video","context_length":0,"price_per_1k_input":0.05000,"price_per_1k_output":0.05000,"description":"Open-source video generation model. Generates coherent 6-second clips from text prompts.","tags":["video-generation","text-to-video","open-source"]},
-  {"id":"m-015","name":"Llama 3.3 70B Instruct","provider":"Meta","modality":"text","context_length":131072,"price_per_1k_input":0.00059,"price_per_1k_output":0.00079,"description":"Meta's latest 70B model with improved instruction following and reasoning capabilities.","tags":["instruction","reasoning","latest"]}
+  {
+    "id": "alibaba-qwen3-32b",
+    "name": "Qwen3-32B",
+    "provider": "Alibaba/Qwen",
+    "modality": "text",
+    "context_length": 32768,
+    "price_per_1k_input": 0.00025,
+    "price_per_1k_output": 0.00055,
+    "description": "Alibaba's Qwen3 32B general-purpose instruction model with strong tool use and multilingual support across a 32k context window.",
+    "tags": [
+      "tools"
+    ]
+  },
+  {
+    "id": "all-mini-lm-l6-v2",
+    "name": "all-MiniLM-L6-v2",
+    "provider": "sentence-transformers",
+    "modality": "text",
+    "context_length": 0,
+    "price_per_1k_input": 0,
+    "price_per_1k_output": 0,
+    "description": "Lightweight sentence embedding model optimized for speed. Ideal for semantic search, clustering, and similarity tasks at minimal cost.",
+    "tags": [
+      "embedding"
+    ]
+  },
+  {
+    "id": "anthropic-claude-4.5-sonnet",
+    "name": "Claude Sonnet 4.5",
+    "provider": "Anthropic",
+    "modality": "text",
+    "context_length": 200000,
+    "price_per_1k_input": 0.003,
+    "price_per_1k_output": 0.015000000000000001,
+    "description": "Anthropic's Claude Sonnet 4.5 balances intelligence and efficiency. Supports vision, prompt caching, and tool use with a 200k context window.",
+    "tags": [
+      "vision",
+      "caching",
+      "tools"
+    ]
+  },
+  {
+    "id": "anthropic-claude-4.6-sonnet",
+    "name": "Claude Sonnet 4.6",
+    "provider": "Anthropic",
+    "modality": "text",
+    "context_length": 200000,
+    "price_per_1k_input": 0.003,
+    "price_per_1k_output": 0.015000000000000001,
+    "description": "Anthropic's Claude Sonnet 4.6 — an improved mid-tier model with enhanced reasoning, vision, and tool use in a 200k context window.",
+    "tags": [
+      "vision",
+      "caching",
+      "tools"
+    ]
+  },
+  {
+    "id": "anthropic-claude-5-sonnet",
+    "name": "Claude Sonnet 5",
+    "provider": "Anthropic",
+    "modality": "text",
+    "context_length": 1000000,
+    "price_per_1k_input": 0.002,
+    "price_per_1k_output": 0.01,
+    "description": "Claude Sonnet 5 delivers frontier-level intelligence with a 1M context window, vision capabilities, and efficient prompt caching.",
+    "tags": [
+      "vision",
+      "caching",
+      "tools",
+      "long-context"
+    ]
+  },
+  {
+    "id": "anthropic-claude-fable-5",
+    "name": "Claude Fable 5",
+    "provider": "Anthropic",
+    "modality": "text",
+    "context_length": 1000000,
+    "price_per_1k_input": 0.01,
+    "price_per_1k_output": 0.05,
+    "description": "Claude Fable 5 is Anthropic's most capable creative and reasoning model with a 1M context window and full multimodal support.",
+    "tags": [
+      "vision",
+      "caching",
+      "tools",
+      "long-context"
+    ]
+  },
+  {
+    "id": "anthropic-claude-haiku-4.5",
+    "name": "Claude Haiku 4.5",
+    "provider": "Anthropic",
+    "modality": "text",
+    "context_length": 200000,
+    "price_per_1k_input": 0.001,
+    "price_per_1k_output": 0.005,
+    "description": "Claude Haiku 4.5 is Anthropic's fastest and most compact model. Best for high-throughput, low-latency tasks with vision and tool use.",
+    "tags": [
+      "vision",
+      "caching",
+      "tools",
+      "fast"
+    ]
+  },
+  {
+    "id": "anthropic-claude-opus-4.5",
+    "name": "Claude Opus 4.5",
+    "provider": "Anthropic",
+    "modality": "text",
+    "context_length": 200000,
+    "price_per_1k_input": 0.005,
+    "price_per_1k_output": 0.025,
+    "description": "Claude Opus 4.5 offers deep reasoning and instruction-following capabilities with 200k context, vision, and robust tool use.",
+    "tags": [
+      "vision",
+      "caching",
+      "tools"
+    ]
+  },
+  {
+    "id": "anthropic-claude-opus-4.6",
+    "name": "Claude Opus 4.6",
+    "provider": "Anthropic",
+    "modality": "text",
+    "context_length": 200000,
+    "price_per_1k_input": 0.005,
+    "price_per_1k_output": 0.025,
+    "description": "Claude Opus 4.6 brings enhanced intelligence and reliability for complex tasks, supporting vision, caching, and tools in a 200k window.",
+    "tags": [
+      "vision",
+      "caching",
+      "tools"
+    ]
+  },
+  {
+    "id": "anthropic-claude-opus-4.7",
+    "name": "Claude Opus 4.7",
+    "provider": "Anthropic",
+    "modality": "text",
+    "context_length": 200000,
+    "price_per_1k_input": 0.005,
+    "price_per_1k_output": 0.025,
+    "description": "Claude Opus 4.7 is Anthropic's advanced flagship model with strong reasoning, vision, and 200k context for demanding workloads.",
+    "tags": [
+      "vision",
+      "caching",
+      "tools"
+    ]
+  },
+  {
+    "id": "anthropic-claude-opus-4.8",
+    "name": "Claude Opus 4.8",
+    "provider": "Anthropic",
+    "modality": "text",
+    "context_length": 1000000,
+    "price_per_1k_input": 0.005,
+    "price_per_1k_output": 0.025,
+    "description": "Claude Opus 4.8 scales to a 1M context window with top-tier reasoning, multimodal capabilities, and extended document analysis.",
+    "tags": [
+      "vision",
+      "caching",
+      "tools",
+      "long-context"
+    ]
+  },
+  {
+    "id": "anthropic-claude-opus-5",
+    "name": "Claude Opus 5",
+    "provider": "Anthropic",
+    "modality": "text",
+    "context_length": 1000000,
+    "price_per_1k_input": 0.005,
+    "price_per_1k_output": 0.025,
+    "description": "Claude Opus 5 is Anthropic's most powerful model with a 1M context window, excelling at complex analysis, coding, and reasoning tasks.",
+    "tags": [
+      "vision",
+      "caching",
+      "tools",
+      "long-context"
+    ]
+  },
+  {
+    "id": "arcee-trinity-large-thinking",
+    "name": "Arcee Trinity Large Thinking",
+    "provider": "Arcee",
+    "modality": "text",
+    "context_length": 128000,
+    "price_per_1k_input": 0.00025,
+    "price_per_1k_output": 0.0009,
+    "description": "Arcee's Trinity Large Thinking model with extended reasoning for complex analytical tasks. Supports caching and tool use with 128k context.",
+    "tags": [
+      "caching",
+      "tools",
+      "reasoning"
+    ]
+  },
+  {
+    "id": "bge-m3",
+    "name": "BGE M3",
+    "provider": "BAAI",
+    "modality": "text",
+    "context_length": 0,
+    "price_per_1k_input": 0,
+    "price_per_1k_output": 0,
+    "description": "BAAI's BGE M3 multilingual embedding model supports dense, sparse, and multi-vector retrieval in over 100 languages.",
+    "tags": [
+      "embedding"
+    ]
+  },
+  {
+    "id": "bge-reranker-v2-m3",
+    "name": "BGE Reranker v2 M3",
+    "provider": "BAAI",
+    "modality": "text",
+    "context_length": 0,
+    "price_per_1k_input": 0,
+    "price_per_1k_output": 0,
+    "description": "BAAI's BGE Reranker v2 M3 provides high-quality cross-encoder reranking for multilingual retrieval-augmented generation pipelines.",
+    "tags": [
+      "embedding"
+    ]
+  },
+  {
+    "id": "deepseek-3.2",
+    "name": "DeepSeek V3.2",
+    "provider": "DeepSeek",
+    "modality": "text",
+    "context_length": 163840,
+    "price_per_1k_input": 0.00025,
+    "price_per_1k_output": 0.0007999999999999999,
+    "description": "DeepSeek V3.2 is a high-performance MoE language model with 163k context, strong coding ability, and support for caching and tools.",
+    "tags": [
+      "caching",
+      "tools"
+    ]
+  },
+  {
+    "id": "deepseek-4-flash",
+    "name": "DeepSeek V4 Flash",
+    "provider": "DeepSeek",
+    "modality": "text",
+    "context_length": 1048576,
+    "price_per_1k_input": 0.000068,
+    "price_per_1k_output": 0.000168,
+    "description": "DeepSeek V4 Flash delivers ultra-fast inference with a massive 1M context window. Optimized for long-document processing and tool use.",
+    "tags": [
+      "tools",
+      "long-context",
+      "fast"
+    ]
+  },
+  {
+    "id": "deepseek-r1-distill-llama-70b",
+    "name": "DeepSeek R1 Distill Llama 70B",
+    "provider": "DeepSeek",
+    "modality": "text",
+    "context_length": 32768,
+    "price_per_1k_input": 0.00099,
+    "price_per_1k_output": 0.00099,
+    "description": "DeepSeek R1 distilled into a Llama 70B backbone, bringing chain-of-thought reasoning to an accessible size with tool-use support.",
+    "tags": [
+      "tools",
+      "reasoning"
+    ]
+  },
+  {
+    "id": "deepseek-v4-flash-0731",
+    "name": "DeepSeek V4 Flash 0731",
+    "provider": "DeepSeek",
+    "modality": "text",
+    "context_length": 1048576,
+    "price_per_1k_input": 0.00008,
+    "price_per_1k_output": 0.000252,
+    "description": "DeepSeek V4 Flash (July 2025 release) with prompt caching, 1M context, and optimized throughput for production-scale deployments.",
+    "tags": [
+      "caching",
+      "tools",
+      "long-context",
+      "fast"
+    ]
+  },
+  {
+    "id": "deepseek-v4-pro",
+    "name": "DeepSeek V4 Pro",
+    "provider": "DeepSeek",
+    "modality": "text",
+    "context_length": 1048576,
+    "price_per_1k_input": 0.00087,
+    "price_per_1k_output": 0.00174,
+    "description": "DeepSeek V4 Pro is the full-size flagship model with 1M context, advanced reasoning, prompt caching, and comprehensive tool support.",
+    "tags": [
+      "caching",
+      "tools",
+      "long-context"
+    ]
+  },
+  {
+    "id": "deepseek-v4-pro-0813",
+    "name": "DeepSeek V4 Pro 0813",
+    "provider": "DeepSeek",
+    "modality": "text",
+    "context_length": 1048576,
+    "price_per_1k_input": 0.00132,
+    "price_per_1k_output": 0.00396,
+    "description": "DeepSeek V4 Pro (August 2025 release) with 1M context, enhanced capabilities, caching, and tool use for enterprise workloads.",
+    "tags": [
+      "caching",
+      "tools",
+      "long-context"
+    ]
+  },
+  {
+    "id": "e5-large-v2",
+    "name": "E5 Large v2",
+    "provider": "intfloat",
+    "modality": "text",
+    "context_length": 0,
+    "price_per_1k_input": 0,
+    "price_per_1k_output": 0,
+    "description": "intfloat's E5 Large v2 text embedding model for high-quality semantic search, passage retrieval, and document similarity tasks.",
+    "tags": [
+      "embedding"
+    ]
+  },
+  {
+    "id": "gemma-4-31B-it",
+    "name": "Gemma 4 31B Instruct",
+    "provider": "Google",
+    "modality": "text",
+    "context_length": 256000,
+    "price_per_1k_input": 0.00017999999999999998,
+    "price_per_1k_output": 0.0005,
+    "description": "Google's Gemma 4 31B instruction-tuned model with vision support, 256k context, and strong multilingual performance for diverse tasks.",
+    "tags": [
+      "vision",
+      "caching",
+      "tools"
+    ]
+  },
+  {
+    "id": "glm-5",
+    "name": "GLM-5",
+    "provider": "Z.ai",
+    "modality": "text",
+    "context_length": 64000,
+    "price_per_1k_input": 0.00075,
+    "price_per_1k_output": 0.0024,
+    "description": "Z.ai's GLM-5 conversational model with 64k context, tool calling, and prompt caching for efficient Chinese and English interactions.",
+    "tags": [
+      "caching",
+      "tools"
+    ]
+  },
+  {
+    "id": "glm-5.1",
+    "name": "GLM-5.1",
+    "provider": "Z.ai",
+    "modality": "text",
+    "context_length": 163840,
+    "price_per_1k_input": 0.000975,
+    "price_per_1k_output": 0.0043,
+    "description": "Z.ai's GLM-5.1 brings improved reasoning and instruction following with an expanded 163k context, caching, and tool-use support.",
+    "tags": [
+      "caching",
+      "tools"
+    ]
+  },
+  {
+    "id": "glm-5.2",
+    "name": "GLM-5.2",
+    "provider": "Z.ai",
+    "modality": "text",
+    "context_length": 262144,
+    "price_per_1k_input": 0.00063,
+    "price_per_1k_output": 0.00198,
+    "description": "Z.ai's GLM-5.2 with 262k context window, enhanced multilingual understanding, prompt caching, and reliable tool-calling capabilities.",
+    "tags": [
+      "caching",
+      "tools"
+    ]
+  },
+  {
+    "id": "gte-large-en-v1.5",
+    "name": "GTE Large en v1.5",
+    "provider": "Alibaba/Qwen",
+    "modality": "text",
+    "context_length": 0,
+    "price_per_1k_input": 0,
+    "price_per_1k_output": 0,
+    "description": "Alibaba's GTE Large English v1.5 embedding model, delivering high-quality dense retrieval for English semantic search tasks.",
+    "tags": [
+      "embedding"
+    ]
+  },
+  {
+    "id": "kimi-k2.5",
+    "name": "Kimi K2.5",
+    "provider": "Moonshot AI",
+    "modality": "text",
+    "context_length": 262144,
+    "price_per_1k_input": 0.000375,
+    "price_per_1k_output": 0.002025,
+    "description": "Moonshot AI's Kimi K2.5 with 262k context and vision capabilities, designed for long-document reasoning and multimodal tasks.",
+    "tags": [
+      "vision",
+      "tools"
+    ]
+  },
+  {
+    "id": "kimi-k2.6",
+    "name": "Kimi K2.6",
+    "provider": "Moonshot AI",
+    "modality": "text",
+    "context_length": 262144,
+    "price_per_1k_input": 0.00076,
+    "price_per_1k_output": 0.0031999999999999997,
+    "description": "Moonshot AI's Kimi K2.6 offers improved instruction following and tool use in a 262k context window for agentic applications.",
+    "tags": [
+      "tools"
+    ]
+  },
+  {
+    "id": "kimi-k3",
+    "name": "Kimi K3",
+    "provider": "Moonshot AI",
+    "modality": "text",
+    "context_length": 131072,
+    "price_per_1k_input": 0.0028499999999999997,
+    "price_per_1k_output": 0.01425,
+    "description": "Moonshot AI's Kimi K3 multimodal model with vision support and 128k context, designed for complex reasoning and long-context tasks.",
+    "tags": [
+      "vision",
+      "tools"
+    ]
+  },
+  {
+    "id": "llama-4-maverick",
+    "name": "Llama 4 Maverick 17B 128E",
+    "provider": "Meta",
+    "modality": "text",
+    "context_length": 128000,
+    "price_per_1k_input": 0.00019999999999999998,
+    "price_per_1k_output": 0.000696,
+    "description": "Meta's Llama 4 Maverick 17B with 128 experts uses a MoE architecture for efficient, high-quality inference with tool-use support.",
+    "tags": [
+      "tools"
+    ]
+  },
+  {
+    "id": "llama3.3-70b-instruct",
+    "name": "Llama 3.3 Instruct 70B",
+    "provider": "Meta",
+    "modality": "text",
+    "context_length": 128000,
+    "price_per_1k_input": 0.00065,
+    "price_per_1k_output": 0.00065,
+    "description": "Meta's Llama 3.3 70B instruction-tuned model. Excellent open-weight general assistant with 128k context and strong tool support.",
+    "tags": [
+      "tools"
+    ]
+  },
+  {
+    "id": "mimo-v2.5-pro",
+    "name": "MiMo V2.5 Pro",
+    "provider": "Xiaomi",
+    "modality": "text",
+    "context_length": 262144,
+    "price_per_1k_input": 0.00039999999999999996,
+    "price_per_1k_output": 0.0015,
+    "description": "Xiaomi's MiMo V2.5 Pro mathematical reasoning model with 262k context, caching, and tool use for STEM and analytical tasks.",
+    "tags": [
+      "caching",
+      "tools"
+    ]
+  },
+  {
+    "id": "minimax-m2.5",
+    "name": "MiniMax M2.5",
+    "provider": "MiniMax",
+    "modality": "text",
+    "context_length": 65536,
+    "price_per_1k_input": 0.000225,
+    "price_per_1k_output": 0.0009,
+    "description": "MiniMax M2.5 is a fast, capable instruction model with 64k context and tool-use support for responsive conversational applications.",
+    "tags": [
+      "tools",
+      "fast"
+    ]
+  },
+  {
+    "id": "mistral-3-14B",
+    "name": "Ministral 3 14B Instruct",
+    "provider": "Mistral AI",
+    "modality": "text",
+    "context_length": 262144,
+    "price_per_1k_input": 0.00019999999999999998,
+    "price_per_1k_output": 0.00019999999999999998,
+    "description": "Mistral AI's Ministral 3 14B Instruct with 262k context and tool support. Efficient frontier model for multilingual reasoning tasks.",
+    "tags": [
+      "tools"
+    ]
+  },
+  {
+    "id": "multi-qa-mpnet-base-dot-v1",
+    "name": "Multi-QA mpnet base dot v1",
+    "provider": "sentence-transformers",
+    "modality": "text",
+    "context_length": 0,
+    "price_per_1k_input": 0,
+    "price_per_1k_output": 0,
+    "description": "Sentence-Transformers' Multi-QA MPNet model optimized for semantic question answering and asymmetric passage retrieval tasks.",
+    "tags": [
+      "embedding"
+    ]
+  },
+  {
+    "id": "nemotron-3-nano-omni",
+    "name": "Nemotron 3 Nano Omni",
+    "provider": "NVIDIA",
+    "modality": "text",
+    "context_length": 65536,
+    "price_per_1k_input": 0.0005,
+    "price_per_1k_output": 0.0009,
+    "description": "NVIDIA's Nemotron 3 Nano Omni is a fast multimodal model with vision support, ideal for low-latency agentic and visual tasks.",
+    "tags": [
+      "vision",
+      "tools",
+      "fast"
+    ]
+  },
+  {
+    "id": "nemotron-3-ultra-550b",
+    "name": "Nemotron 3 Ultra 550B",
+    "provider": "NVIDIA",
+    "modality": "text",
+    "context_length": 131072,
+    "price_per_1k_input": 0.0009,
+    "price_per_1k_output": 0.0017000000000000001,
+    "description": "NVIDIA's Nemotron 3 Ultra 550B — one of the largest open models, built for highest-quality reasoning and instruction following.",
+    "tags": [
+      "tools"
+    ]
+  },
+  {
+    "id": "nemotron-nano-12b-v2-vl",
+    "name": "Nemotron Nano 12B v2 VL",
+    "provider": "NVIDIA",
+    "modality": "text",
+    "context_length": 128000,
+    "price_per_1k_input": 0.00019999999999999998,
+    "price_per_1k_output": 0.0006,
+    "description": "NVIDIA's Nemotron Nano 12B v2 Vision-Language model delivers fast multimodal inference at compact scale with tool-use support.",
+    "tags": [
+      "vision",
+      "tools",
+      "fast"
+    ]
+  },
+  {
+    "id": "nvidia-nemotron-3-super-120b",
+    "name": "Nemotron 3 Super 120B",
+    "provider": "NVIDIA",
+    "modality": "text",
+    "context_length": 1000000,
+    "price_per_1k_input": 0.000165,
+    "price_per_1k_output": 0.00035800000000000003,
+    "description": "NVIDIA's Nemotron 3 Super 120B offers flagship-quality reasoning with a 1M context window, caching, and comprehensive tool use.",
+    "tags": [
+      "caching",
+      "tools",
+      "long-context"
+    ]
+  },
+  {
+    "id": "openai-gpt-4.1",
+    "name": "GPT-4.1",
+    "provider": "OpenAI",
+    "modality": "text",
+    "context_length": 1047576,
+    "price_per_1k_input": 0.002,
+    "price_per_1k_output": 0.008,
+    "description": "OpenAI's GPT-4.1 with a 1M context window and vision support. Strong general-purpose model for long-document analysis and coding.",
+    "tags": [
+      "vision",
+      "caching",
+      "tools",
+      "long-context"
+    ]
+  },
+  {
+    "id": "openai-gpt-4o",
+    "name": "GPT-4o",
+    "provider": "OpenAI",
+    "modality": "text",
+    "context_length": 128000,
+    "price_per_1k_input": 0.0025,
+    "price_per_1k_output": 0.01,
+    "description": "OpenAI's GPT-4o is a fast, multimodal flagship model with vision and tool support, ideal for real-time interactive applications.",
+    "tags": [
+      "vision",
+      "caching",
+      "tools"
+    ]
+  },
+  {
+    "id": "openai-gpt-4o-mini",
+    "name": "GPT-4o mini",
+    "provider": "OpenAI",
+    "modality": "text",
+    "context_length": 128000,
+    "price_per_1k_input": 0.00015,
+    "price_per_1k_output": 0.0006,
+    "description": "OpenAI's GPT-4o mini delivers fast, cost-effective multimodal responses with vision and tool support for high-volume use cases.",
+    "tags": [
+      "vision",
+      "caching",
+      "tools",
+      "fast"
+    ]
+  },
+  {
+    "id": "openai-gpt-5",
+    "name": "GPT-5",
+    "provider": "OpenAI",
+    "modality": "text",
+    "context_length": 400000,
+    "price_per_1k_input": 0.00125,
+    "price_per_1k_output": 0.01,
+    "description": "OpenAI's GPT-5 flagship model with 400k context, vision, and advanced reasoning. Sets a new standard for AI capability and reliability.",
+    "tags": [
+      "vision",
+      "caching",
+      "tools"
+    ]
+  },
+  {
+    "id": "openai-gpt-5-mini",
+    "name": "GPT-5 mini",
+    "provider": "OpenAI",
+    "modality": "text",
+    "context_length": 400000,
+    "price_per_1k_input": 0.00025,
+    "price_per_1k_output": 0.002,
+    "description": "OpenAI's GPT-5 mini balances performance and cost with 400k context, vision, and tool use for scalable production deployments.",
+    "tags": [
+      "vision",
+      "caching",
+      "tools",
+      "fast"
+    ]
+  },
+  {
+    "id": "openai-gpt-5-nano",
+    "name": "GPT-5 nano",
+    "provider": "OpenAI",
+    "modality": "text",
+    "context_length": 400000,
+    "price_per_1k_input": 0.000049999999999999996,
+    "price_per_1k_output": 0.00039999999999999996,
+    "description": "OpenAI's GPT-5 nano is the fastest, most affordable GPT-5 tier with 400k context for high-throughput, latency-sensitive tasks.",
+    "tags": [
+      "vision",
+      "caching",
+      "tools",
+      "fast"
+    ]
+  },
+  {
+    "id": "openai-gpt-5.2",
+    "name": "GPT-5.2",
+    "provider": "OpenAI",
+    "modality": "text",
+    "context_length": 400000,
+    "price_per_1k_input": 0.00175,
+    "price_per_1k_output": 0.014,
+    "description": "OpenAI's GPT-5.2 with improved instruction-following, 400k context, and full vision and tool-use capabilities for complex workflows.",
+    "tags": [
+      "vision",
+      "caching",
+      "tools"
+    ]
+  },
+  {
+    "id": "openai-gpt-5.2-pro",
+    "name": "GPT-5.2 Pro",
+    "provider": "OpenAI",
+    "modality": "text",
+    "context_length": 400000,
+    "price_per_1k_input": 0.020999999999999998,
+    "price_per_1k_output": 0.16799999999999998,
+    "description": "OpenAI's GPT-5.2 Pro delivers enhanced intelligence and reliability with 400k context, vision, and advanced tool-calling for enterprises.",
+    "tags": [
+      "vision",
+      "caching",
+      "tools"
+    ]
+  },
+  {
+    "id": "openai-gpt-5.3-codex",
+    "name": "GPT-5.3 Codex",
+    "provider": "OpenAI",
+    "modality": "text",
+    "context_length": 400000,
+    "price_per_1k_input": 0.00175,
+    "price_per_1k_output": 0.014,
+    "description": "OpenAI's GPT-5.3 Codex is specialized for software engineering with 400k context, code generation, vision, and deep tool-use support.",
+    "tags": [
+      "vision",
+      "caching",
+      "tools",
+      "code"
+    ]
+  },
+  {
+    "id": "openai-gpt-5.4",
+    "name": "GPT-5.4",
+    "provider": "OpenAI",
+    "modality": "text",
+    "context_length": 400000,
+    "price_per_1k_input": 0.0025,
+    "price_per_1k_output": 0.015000000000000001,
+    "description": "OpenAI's GPT-5.4 with refined performance across reasoning, coding, and multimodal tasks in a 400k context window with tool support.",
+    "tags": [
+      "vision",
+      "caching",
+      "tools"
+    ]
+  },
+  {
+    "id": "openai-gpt-5.4-mini",
+    "name": "GPT-5.4 mini",
+    "provider": "OpenAI",
+    "modality": "text",
+    "context_length": 400000,
+    "price_per_1k_input": 0.00075,
+    "price_per_1k_output": 0.0045000000000000005,
+    "description": "OpenAI's GPT-5.4 mini is an efficient multimodal model with 400k context and fast response times for scalable AI applications.",
+    "tags": [
+      "vision",
+      "caching",
+      "tools",
+      "fast"
+    ]
+  },
+  {
+    "id": "openai-gpt-5.4-nano",
+    "name": "GPT-5.4 nano",
+    "provider": "OpenAI",
+    "modality": "text",
+    "context_length": 400000,
+    "price_per_1k_input": 0.00019999999999999998,
+    "price_per_1k_output": 0.00125,
+    "description": "OpenAI's GPT-5.4 nano targets cost-optimized, high-throughput deployments with 400k context and full vision and tool support.",
+    "tags": [
+      "vision",
+      "caching",
+      "tools",
+      "fast"
+    ]
+  },
+  {
+    "id": "openai-gpt-5.4-pro",
+    "name": "GPT-5.4 Pro",
+    "provider": "OpenAI",
+    "modality": "text",
+    "context_length": 1050000,
+    "price_per_1k_input": 0.030000000000000002,
+    "price_per_1k_output": 0.18000000000000002,
+    "description": "OpenAI's GPT-5.4 Pro with a 1M context window delivers top-tier reasoning and vision for the most demanding long-context workloads.",
+    "tags": [
+      "vision",
+      "caching",
+      "tools",
+      "long-context"
+    ]
+  },
+  {
+    "id": "openai-gpt-5.5",
+    "name": "GPT-5.5",
+    "provider": "OpenAI",
+    "modality": "text",
+    "context_length": 1000000,
+    "price_per_1k_input": 0.005,
+    "price_per_1k_output": 0.030000000000000002,
+    "description": "OpenAI's GPT-5.5 flagship with 1M context window, offering frontier multimodal intelligence with prompt caching and tool support.",
+    "tags": [
+      "vision",
+      "caching",
+      "tools",
+      "long-context"
+    ]
+  },
+  {
+    "id": "openai-gpt-5.6-luna",
+    "name": "GPT-5.6 Luna",
+    "provider": "OpenAI",
+    "modality": "text",
+    "context_length": 1050000,
+    "price_per_1k_input": 0.00019999999999999998,
+    "price_per_1k_output": 0.0012,
+    "description": "GPT-5.6 Luna is OpenAI's balanced 1M context model combining speed and intelligence for complex multimodal agentic workflows.",
+    "tags": [
+      "vision",
+      "caching",
+      "tools",
+      "long-context"
+    ]
+  },
+  {
+    "id": "openai-gpt-5.6-sol",
+    "name": "GPT-5.6 Sol",
+    "provider": "OpenAI",
+    "modality": "text",
+    "context_length": 1050000,
+    "price_per_1k_input": 0.005,
+    "price_per_1k_output": 0.030000000000000002,
+    "description": "GPT-5.6 Sol is OpenAI's performance-optimized 1M context model with superior reasoning for enterprise-scale AI deployments.",
+    "tags": [
+      "vision",
+      "caching",
+      "tools",
+      "long-context"
+    ]
+  },
+  {
+    "id": "openai-gpt-5.6-terra",
+    "name": "GPT-5.6 Terra",
+    "provider": "OpenAI",
+    "modality": "text",
+    "context_length": 1050000,
+    "price_per_1k_input": 0.002,
+    "price_per_1k_output": 0.012,
+    "description": "GPT-5.6 Terra is OpenAI's efficiency-focused 1M context model delivering broad multimodal capability at competitive cost.",
+    "tags": [
+      "vision",
+      "caching",
+      "tools",
+      "long-context"
+    ]
+  },
+  {
+    "id": "openai-gpt-image-1",
+    "name": "GPT Image 1",
+    "provider": "OpenAI",
+    "modality": "image",
+    "context_length": 0,
+    "price_per_1k_input": 0.005,
+    "price_per_1k_output": 0.04,
+    "description": "OpenAI's GPT Image 1 generates high-quality images from text prompts using instruction-tuned diffusion for precise creative control.",
+    "tags": [
+      "image-generation"
+    ]
+  },
+  {
+    "id": "openai-gpt-image-1.5",
+    "name": "GPT Image 1.5",
+    "provider": "OpenAI",
+    "modality": "image",
+    "context_length": 0,
+    "price_per_1k_input": 0.005,
+    "price_per_1k_output": 0.01,
+    "description": "OpenAI's GPT Image 1.5 offers improved prompt adherence and photorealism over GPT Image 1 for production image generation.",
+    "tags": [
+      "image-generation"
+    ]
+  },
+  {
+    "id": "openai-gpt-image-2",
+    "name": "GPT Image 2",
+    "provider": "OpenAI",
+    "modality": "image",
+    "context_length": 0,
+    "price_per_1k_input": 0.005,
+    "price_per_1k_output": 0.03,
+    "description": "OpenAI's GPT Image 2 delivers state-of-the-art text-to-image quality with enhanced detail, composition, and stylistic fidelity.",
+    "tags": [
+      "image-generation"
+    ]
+  },
+  {
+    "id": "openai-gpt-oss-120b",
+    "name": "GPT OSS 120B",
+    "provider": "DigitalOcean",
+    "modality": "text",
+    "context_length": 128000,
+    "price_per_1k_input": 0.00009999999999999999,
+    "price_per_1k_output": 0.0007,
+    "description": "DigitalOcean-hosted open-source 120B model via OpenAI-compatible API, offering enterprise-grade performance with 128k context.",
+    "tags": [
+      "caching",
+      "tools"
+    ]
+  },
+  {
+    "id": "openai-gpt-oss-20b",
+    "name": "GPT OSS 20B",
+    "provider": "DigitalOcean",
+    "modality": "text",
+    "context_length": 128000,
+    "price_per_1k_input": 0.000049999999999999996,
+    "price_per_1k_output": 0.00045,
+    "description": "DigitalOcean-hosted open-source 20B model with 128k context and tool-use support for cost-effective, self-managed deployments.",
+    "tags": [
+      "tools"
+    ]
+  },
+  {
+    "id": "openai-o1",
+    "name": "o1",
+    "provider": "OpenAI",
+    "modality": "text",
+    "context_length": 200000,
+    "price_per_1k_input": 0.015000000000000001,
+    "price_per_1k_output": 0.060000000000000005,
+    "description": "OpenAI's o1 reasoning model uses chain-of-thought processing to solve hard problems in math, science, and code with 200k context.",
+    "tags": [
+      "vision",
+      "caching",
+      "tools",
+      "reasoning"
+    ]
+  },
+  {
+    "id": "openai-o3",
+    "name": "o3",
+    "provider": "OpenAI",
+    "modality": "text",
+    "context_length": 200000,
+    "price_per_1k_input": 0.002,
+    "price_per_1k_output": 0.008,
+    "description": "OpenAI's o3 is the most capable reasoning model, achieving state-of-the-art results on complex STEM tasks with 200k context and vision.",
+    "tags": [
+      "vision",
+      "caching",
+      "tools",
+      "reasoning"
+    ]
+  },
+  {
+    "id": "openai-o3-mini",
+    "name": "o3-mini",
+    "provider": "OpenAI",
+    "modality": "text",
+    "context_length": 200000,
+    "price_per_1k_input": 0.0011,
+    "price_per_1k_output": 0.0044,
+    "description": "OpenAI's o3-mini delivers fast, cost-efficient reasoning with 200k context, ideal for math, science, and coding at scale.",
+    "tags": [
+      "caching",
+      "tools",
+      "reasoning",
+      "fast"
+    ]
+  },
+  {
+    "id": "qwen3-coder-flash",
+    "name": "Qwen3 Coder Flash",
+    "provider": "Alibaba/Qwen",
+    "modality": "text",
+    "context_length": 262144,
+    "price_per_1k_input": 0.00045,
+    "price_per_1k_output": 0.0017000000000000001,
+    "description": "Alibaba's Qwen3 Coder Flash is purpose-built for software engineering tasks with 262k context, fast inference, and strong tool use.",
+    "tags": [
+      "caching",
+      "tools",
+      "code",
+      "fast"
+    ]
+  },
+  {
+    "id": "qwen3-embedding-0.6b",
+    "name": "Qwen3 Embedding 0.6B",
+    "provider": "Alibaba/Qwen",
+    "modality": "text",
+    "context_length": 0,
+    "price_per_1k_input": 0,
+    "price_per_1k_output": 0,
+    "description": "Alibaba's Qwen3 Embedding 0.6B is a compact, efficient text embedding model for semantic search and retrieval pipelines.",
+    "tags": [
+      "embedding"
+    ]
+  },
+  {
+    "id": "qwen3-tts-voicedesign",
+    "name": "Qwen3 TTS VoiceDesign",
+    "provider": "Alibaba/Qwen",
+    "modality": "audio",
+    "context_length": 32768,
+    "price_per_1k_input": 0,
+    "price_per_1k_output": 0,
+    "description": "Alibaba's Qwen3 TTS VoiceDesign generates expressive, customizable speech from text with fine-grained voice style control.",
+    "tags": []
+  },
+  {
+    "id": "qwen3.5-397b-a17b",
+    "name": "Qwen3.5 397B A17B",
+    "provider": "Alibaba/Qwen",
+    "modality": "text",
+    "context_length": 131072,
+    "price_per_1k_input": 0.00030199999999999997,
+    "price_per_1k_output": 0.0019250000000000003,
+    "description": "Alibaba's Qwen3.5 397B MoE model activates 17B parameters per token, delivering frontier intelligence with efficient tool-use support.",
+    "tags": [
+      "caching",
+      "tools"
+    ]
+  },
+  {
+    "id": "qwen3.8-max",
+    "name": "Qwen3.8 Max (2.4T A95B)",
+    "provider": "Alibaba/Qwen",
+    "modality": "text",
+    "context_length": 262144,
+    "price_per_1k_input": 0.002,
+    "price_per_1k_output": 0.006,
+    "description": "Alibaba's Qwen3.8 Max (2.4T total, 95B active) is the flagship MoE model with 262k context for the most demanding reasoning tasks.",
+    "tags": [
+      "caching",
+      "tools"
+    ]
+  },
+  {
+    "id": "stable-diffusion-3.5-large",
+    "name": "Stable Diffusion 3.5 Large",
+    "provider": "Stability AI",
+    "modality": "image",
+    "context_length": 0,
+    "price_per_1k_input": 0,
+    "price_per_1k_output": 0,
+    "description": "Stability AI's Stable Diffusion 3.5 Large produces high-fidelity images with excellent typography, photorealism, and style adherence.",
+    "tags": [
+      "image-generation"
+    ]
+  },
+  {
+    "id": "wan2-2-t2v-a14b",
+    "name": "Wan2.2 T2V A14B",
+    "provider": "Alibaba",
+    "modality": "video",
+    "context_length": 0,
+    "price_per_1k_input": 0,
+    "price_per_1k_output": 0,
+    "description": "Alibaba's Wan2.2 T2V A14B is a state-of-the-art text-to-video generation model producing high-quality short video clips from text.",
+    "tags": [
+      "video-generation"
+    ]
+  }
 ]

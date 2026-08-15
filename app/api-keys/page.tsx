@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 import apiKeys from "@/public/data/api_keys.json";
-import { Copy, Eye, EyeOff, Trash2 } from "lucide-react";
+import { Copy, Trash2 } from "lucide-react";
 
 const scopeStyle: Record<string, string> = {
   personal: "bg-blue-900/40 text-blue-400 border-blue-800",

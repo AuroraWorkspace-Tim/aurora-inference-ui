@@ -692,7 +692,7 @@
       "license": "MIT License",
       "license_url": "https://github.com/deepseek-ai/DeepSeek-R1/blob/main/LICENSE",
       "model_card": "https://huggingface.co/deepseek-ai/DeepSeek-R1-Distill-Llama-70B",
-      "context_length": 32678,
+      "context_length": 32768,
       "max_output_tokens": 8192,
       "input_modalities": [
         "text"

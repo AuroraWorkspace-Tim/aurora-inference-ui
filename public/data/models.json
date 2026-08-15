@@ -256,7 +256,7 @@
     "name": "DeepSeek R1 Distill Llama 70B",
     "provider": "DeepSeek",
     "modality": "text",
-    "context_length": 32678,
+    "context_length": 32768,
     "price_per_1k_input": 0.00099,
     "price_per_1k_output": 0.00099,
     "description": "",

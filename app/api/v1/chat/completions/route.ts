@@ -3,7 +3,7 @@ import { NextRequest, NextResponse } from "next/server";
 const DO_BASE = "https://inference.do-ai.run/v1";
 
 export async function POST(req: NextRequest) {
-  const key = process.env.DO_API_KEY;
+  const key = process.env.DO_MODEL_KEY;
   if (!key) {
     return NextResponse.json({ error: "DO_API_KEY not configured" }, { status: 500 });
   }

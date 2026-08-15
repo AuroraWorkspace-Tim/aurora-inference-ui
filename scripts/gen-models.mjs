@@ -210,15 +210,21 @@ const models = catalog.models
       m.pricing?.completion != null
         ? parseFloat(m.pricing.completion) * 1000
         : (existingOutputPrices.get(m.id)  ?? 0);
+    const priceCacheRead =
+      m.pricing?.input_cache_read != null
+        ? parseFloat(m.pricing.input_cache_read) * 1000
+        : 0;
 
     return {
-      id:                 m.id,
-      name:               m.name,
+      id:                    m.id,
+      name:                  m.name,
       provider,
       modality,
-      context_length:     contextLength,
-      price_per_1k_input:  priceInput,
-      price_per_1k_output: priceOutput,
+      context_length:        contextLength,
+      max_output_tokens:     m.max_output_tokens ?? 0,
+      price_per_1k_input:    priceInput,
+      price_per_1k_output:   priceOutput,
+      price_per_1k_cache_read: priceCacheRead,
       description,
       tags,
     };

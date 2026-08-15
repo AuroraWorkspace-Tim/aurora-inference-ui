@@ -869,7 +869,7 @@
     "modality": "image",
     "context_length": 0,
     "price_per_1k_input": 0.005,
-    "price_per_1k_output": 0.0,
+    "price_per_1k_output": 0.03,
     "description": "",
     "tags": []
   },

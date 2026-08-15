@@ -15,7 +15,7 @@
   {
     "id": "all-mini-lm-l6-v2",
     "name": "all-MiniLM-L6-v2",
-    "provider": "Embedding",
+    "provider": "sentence-transformers",
     "modality": "text",
     "context_length": 0,
     "price_per_1k_input": 0.0,
@@ -199,7 +199,7 @@
   {
     "id": "bge-m3",
     "name": "BGE M3",
-    "provider": "Embedding",
+    "provider": "BAAI",
     "modality": "text",
     "context_length": 0,
     "price_per_1k_input": 0.0,
@@ -212,13 +212,15 @@
   {
     "id": "bge-reranker-v2-m3",
     "name": "BGE Reranker v2 M3",
-    "provider": "Embedding",
+    "provider": "BAAI",
     "modality": "text",
     "context_length": 0,
     "price_per_1k_input": 0.0,
     "price_per_1k_output": 0.0,
     "description": "",
-    "tags": []
+    "tags": [
+      "embedding"
+    ]
   },
   {
     "id": "deepseek-3.2",
@@ -312,7 +314,7 @@
   {
     "id": "e5-large-v2",
     "name": "E5 Large v2",
-    "provider": "Embedding",
+    "provider": "intfloat",
     "modality": "text",
     "context_length": 0,
     "price_per_1k_input": 0.0,
@@ -382,7 +384,7 @@
   {
     "id": "gte-large-en-v1.5",
     "name": "GTE Large en v1.5",
-    "provider": "Embedding",
+    "provider": "Alibaba/Qwen",
     "modality": "text",
     "context_length": 0,
     "price_per_1k_input": 0.0,
@@ -503,7 +505,7 @@
   {
     "id": "multi-qa-mpnet-base-dot-v1",
     "name": "Multi-QA mpnet base dot v1",
-    "provider": "Embedding",
+    "provider": "sentence-transformers",
     "modality": "text",
     "context_length": 0,
     "price_per_1k_input": 0.0,
@@ -1017,23 +1019,27 @@
   {
     "id": "stable-diffusion-3.5-large",
     "name": "Stable Diffusion 3.5 Large",
-    "provider": "Generative",
+    "provider": "Stability AI",
     "modality": "image",
     "context_length": 256,
     "price_per_1k_input": 0.0,
     "price_per_1k_output": 0.0,
     "description": "",
-    "tags": []
+    "tags": [
+      "image-generation"
+    ]
   },
   {
     "id": "wan2-2-t2v-a14b",
     "name": "Wan2.2 T2V A14B",
-    "provider": "Generative",
+    "provider": "Alibaba",
     "modality": "video",
     "context_length": 100,
     "price_per_1k_input": 0.0,
     "price_per_1k_output": 0.0,
     "description": "",
-    "tags": []
+    "tags": [
+      "video-generation"
+    ]
   }
 ]

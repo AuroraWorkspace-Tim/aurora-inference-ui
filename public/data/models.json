@@ -426,7 +426,7 @@
     "name": "Kimi K3",
     "provider": "Moonshot AI",
     "modality": "text",
-    "context_length": 0,
+    "context_length": 131072,
     "price_per_1k_input": 0.0028499999999999997,
     "price_per_1k_output": 0.01425,
     "description": "",

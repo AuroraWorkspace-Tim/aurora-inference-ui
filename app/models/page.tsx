@@ -8,8 +8,10 @@ type Model = {
   provider: string;
   modality: string;
   context_length: number;
+  max_output_tokens: number;
   price_per_1k_input: number;
   price_per_1k_output: number;
+  price_per_1k_cache_read: number;
   description: string;
   tags: string[];
 };
@@ -25,6 +27,8 @@ function inferMetadata(doModel: { id: string; owned_by?: string }): Model {
     context_length: 0,
     price_per_1k_input: 0,
     price_per_1k_output: 0,
+    price_per_1k_cache_read: 0,
+    max_output_tokens: 0,
     description: "",
     tags: [],
   };
@@ -126,9 +130,32 @@ print(response.choices[0].message.content)`;
             {m.description && (
               <p className="text-xs text-gray-400 line-clamp-2">{m.description}</p>
             )}
-            <div className="mt-3 flex items-center gap-3 text-xs text-gray-500">
-              {m.context_length > 0 && <span>{(m.context_length / 1000).toFixed(0)}k ctx</span>}
-              {m.price_per_1k_input > 0 && <span>${m.price_per_1k_input.toFixed(5)}/1k in</span>}
+            <div className="mt-3 flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-gray-500">
+              {m.context_length > 0 && (
+                <span title="Input context window">{(m.context_length / 1000).toFixed(0)}k ctx</span>
+              )}
+              {m.max_output_tokens > 0 && (
+                <span title="Max output tokens">
+                  {m.max_output_tokens >= 1000
+                    ? `${(m.max_output_tokens / 1000).toFixed(0)}k out`
+                    : `${m.max_output_tokens} out`}
+                </span>
+              )}
+              {m.price_per_1k_input > 0 && (
+                <span title="Input price per 1k tokens" className="text-emerald-500">
+                  ${m.price_per_1k_input.toFixed(6)}<span className="text-gray-600">/1k in</span>
+                </span>
+              )}
+              {m.price_per_1k_output > 0 && (
+                <span title="Output price per 1k tokens" className="text-orange-400">
+                  ${m.price_per_1k_output.toFixed(6)}<span className="text-gray-600">/1k out</span>
+                </span>
+              )}
+              {m.price_per_1k_cache_read > 0 && (
+                <span title="Cached input price per 1k tokens" className="text-violet-400">
+                  ${m.price_per_1k_cache_read.toFixed(6)}<span className="text-gray-600">/1k cached</span>
+                </span>
+              )}
             </div>
             {m.tags?.length > 0 && (
               <div className="mt-2 flex flex-wrap gap-1">

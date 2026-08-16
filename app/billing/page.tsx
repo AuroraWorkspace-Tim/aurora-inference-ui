@@ -50,7 +50,7 @@ export default function BillingPage() {
                   <Cell key={i} fill={PIE_COLORS[i % PIE_COLORS.length]} />
                 ))}
               </Pie>
-              <Tooltip contentStyle={{ background: "#111827", border: "1px solid #374151", borderRadius: 8, fontSize: 11 }} formatter={(v: number) => [`$${v.toFixed(2)}`, ""]} />
+              <Tooltip contentStyle={{ background: "#111827", border: "1px solid #374151", borderRadius: 8, fontSize: 11 }} formatter={(v) => { const amount = Number(Array.isArray(v) ? v[0] : v); return [`$${amount.toFixed(2)}`, ""]; }} />
             </PieChart>
           </ResponsiveContainer>
         </div>
@@ -70,7 +70,7 @@ export default function BillingPage() {
             <CartesianGrid strokeDasharray="3 3" stroke="#1f2937" />
             <XAxis dataKey="date" tick={{ fill: "#6b7280", fontSize: 10 }} tickFormatter={(v) => v.slice(5)} />
             <YAxis tick={{ fill: "#6b7280", fontSize: 10 }} tickFormatter={(v) => `$${v}`} />
-            <Tooltip contentStyle={{ background: "#111827", border: "1px solid #374151", borderRadius: 8 }} labelStyle={{ color: "#d1d5db" }} itemStyle={{ color: "#a78bfa" }} formatter={(v: number) => [`$${v}`, "Spend"]} />
+            <Tooltip contentStyle={{ background: "#111827", border: "1px solid #374151", borderRadius: 8 }} labelStyle={{ color: "#d1d5db" }} itemStyle={{ color: "#a78bfa" }} formatter={(v) => [`$${Number(Array.isArray(v) ? v[0] : v)}`, "Spend"]} />
             <Area type="monotone" dataKey="amount_usd" stroke="#7c3aed" fill="url(#spend)" strokeWidth={2} />
           </AreaChart>
         </ResponsiveContainer>

@@ -17,10 +17,19 @@ export async function GET() {
 
   const headers = doHeaders(key);
 
-  const [balanceRes, invoicesRes] = await Promise.all([
-    fetch(`${DO_API_BASE}/customers/my/balance`, { headers, next: { revalidate: 300 } }),
-    fetch(`${DO_API_BASE}/customers/my/invoices`, { headers, next: { revalidate: 300 } }),
-  ]);
+  let balanceRes: Response;
+  let invoicesRes: Response;
+  try {
+    [balanceRes, invoicesRes] = await Promise.all([
+      fetch(`${DO_API_BASE}/customers/my/balance`, { headers, next: { revalidate: 300 } }),
+      fetch(`${DO_API_BASE}/customers/my/invoices`, { headers, next: { revalidate: 300 } }),
+    ]);
+  } catch (err) {
+    return NextResponse.json(
+      { error: "network error contacting DigitalOcean", detail: err instanceof Error ? err.message : "unknown" },
+      { status: 502 }
+    );
+  }
 
   if (!balanceRes.ok) {
     const text = await balanceRes.text();
@@ -37,14 +46,23 @@ export async function GET() {
     );
   }
 
-  const [balance, invoicesData] = await Promise.all([
-    balanceRes.json(),
-    invoicesRes.json(),
-  ]);
+  let balance: unknown;
+  let invoicesData: unknown;
+  try {
+    [balance, invoicesData] = await Promise.all([
+      balanceRes.json(),
+      invoicesRes.json(),
+    ]);
+  } catch (err) {
+    return NextResponse.json(
+      { error: "failed to parse DigitalOcean response", detail: err instanceof Error ? err.message : "unknown" },
+      { status: 502 }
+    );
+  }
 
   return NextResponse.json({
     balance,
-    invoices: invoicesData.invoices ?? [],
-    invoice_preview: invoicesData.invoice_preview ?? null,
+    invoices: (invoicesData as { invoices?: unknown[] }).invoices ?? [],
+    invoice_preview: (invoicesData as { invoice_preview?: unknown }).invoice_preview ?? null,
   });
 }

@@ -38,7 +38,10 @@ function fmt(dollarStr: string): string {
 function periodLabel(period: string): string {
   if (!period) return "—";
   const [year, month] = period.split("-");
-  const date = new Date(parseInt(year), parseInt(month) - 1);
+  const y = parseInt(year, 10);
+  const m = parseInt(month, 10);
+  if (!Number.isFinite(y) || !Number.isFinite(m) || m < 1 || m > 12) return period || "—";
+  const date = new Date(y, m - 1);
   return date.toLocaleDateString("en-US", { month: "long", year: "numeric" });
 }
 
@@ -56,7 +59,8 @@ export default function CogsPage() {
         const body = await res.json().catch(() => ({}));
         throw new Error(body.error ?? `HTTP ${res.status}`);
       }
-      setData(await res.json());
+      const body: CogsData = await res.json();
+      setData(body);
     } catch (e) {
       setError(e instanceof Error ? e.message : "Unknown error");
     } finally {

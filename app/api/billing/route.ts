@@ -1,4 +1,4 @@
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 
 const DO_API = "https://api.digitalocean.com/v2";
 
@@ -16,7 +16,16 @@ interface BillingResponse {
   source: "do_api" | "mock";
 }
 
-export async function GET() {
+export async function GET(request: NextRequest) {
+  // Require X-Admin-Secret header when ADMIN_SECRET env var is set
+  const adminSecret = process.env.ADMIN_SECRET;
+  if (adminSecret) {
+    const provided = request.headers.get("x-admin-secret");
+    if (provided !== adminSecret) {
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+    }
+  }
+
   const key = process.env.DO_API_KEY;
   if (!key) {
     return NextResponse.json({ error: "DO_API_KEY not configured" }, { status: 500 });

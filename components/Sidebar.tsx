@@ -9,6 +9,7 @@ import {
   PlayCircle,
   CreditCard,
   Zap,
+  TrendingDown,
 } from "lucide-react";
 
 const nav = [
@@ -20,6 +21,10 @@ const nav = [
   { href: "/billing", label: "Billing", icon: CreditCard },
 ];
 
+const backofficeNav = [
+  { href: "/backoffice/cogs", label: "COGS", icon: TrendingDown },
+];
+
 export default function Sidebar() {
   const pathname = usePathname();
   return (
@@ -29,9 +34,29 @@ export default function Sidebar() {
         <span className="font-semibold text-white tracking-tight">Aurora</span>
         <span className="text-xs text-gray-500 ml-1">Console</span>
       </div>
-      <nav className="flex-1 px-2 py-4 space-y-0.5">
+      <nav className="flex-1 px-2 py-4 space-y-0.5 overflow-y-auto">
         {nav.map(({ href, label, icon: Icon }) => {
           const active = href === "/" ? pathname === "/" : pathname.startsWith(href);
+          return (
+            <Link
+              key={href}
+              href={href}
+              className={`flex items-center gap-3 px-3 py-2 rounded-lg text-sm transition-colors ${
+                active
+                  ? "bg-violet-600/20 text-violet-300 font-medium"
+                  : "text-gray-400 hover:text-gray-200 hover:bg-gray-800"
+              }`}
+            >
+              <Icon className="w-4 h-4 shrink-0" />
+              {label}
+            </Link>
+          );
+        })}
+        <div className="pt-3 pb-1 px-3 text-xs text-gray-600 uppercase tracking-wider">
+          Backoffice
+        </div>
+        {backofficeNav.map(({ href, label, icon: Icon }) => {
+          const active = pathname.startsWith(href);
           return (
             <Link
               key={href}

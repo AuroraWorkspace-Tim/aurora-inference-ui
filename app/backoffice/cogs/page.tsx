@@ -25,11 +25,14 @@ interface CogsData {
 
 function fmt(dollarStr: string): string {
   const n = parseFloat(dollarStr ?? "0");
+
+  const safeValue = Number.isNaN(n) ? 0 : Math.abs(n);
+
   return new Intl.NumberFormat("en-US", {
     style: "currency",
     currency: "USD",
     minimumFractionDigits: 2,
-  }).format(Math.abs(n));
+  }).format(safeValue);
 }
 
 function periodLabel(period: string): string {

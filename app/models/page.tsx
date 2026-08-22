@@ -1,5 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
+import Link from "next/link";
 import staticModels from "@/public/data/models.json";
 
 type Model = {
@@ -8,8 +9,10 @@ type Model = {
   provider: string;
   modality: string;
   context_length: number;
+  max_output_tokens: number;
   price_per_1k_input: number;
   price_per_1k_output: number;
+  price_per_1k_cache_read: number;
   description: string;
   tags: string[];
 };
@@ -25,6 +28,8 @@ function inferMetadata(doModel: { id: string; owned_by?: string }): Model {
     context_length: 0,
     price_per_1k_input: 0,
     price_per_1k_output: 0,
+    price_per_1k_cache_read: 0,
+    max_output_tokens: 0,
     description: "",
     tags: [],
   };
@@ -64,11 +69,12 @@ export default function ModelsPage() {
 
   const filtered = filter === "all" ? models : models.filter((m) => m.modality === filter);
 
+  const origin = typeof window !== "undefined" ? window.location.origin : "https://aurora-inference-ui.vercel.app";
   const snippet = (m: Model) => `import openai
 
 client = openai.OpenAI(
-    base_url="https://ai.aur.lu/v1",
-    api_key="YOUR_AURORA_KEY",
+    base_url="${origin}/api/v1",
+    api_key="demo",
 )
 
 response = client.chat.completions.create(
@@ -126,9 +132,32 @@ print(response.choices[0].message.content)`;
             {m.description && (
               <p className="text-xs text-gray-400 line-clamp-2">{m.description}</p>
             )}
-            <div className="mt-3 flex items-center gap-3 text-xs text-gray-500">
-              {m.context_length > 0 && <span>{(m.context_length / 1000).toFixed(0)}k ctx</span>}
-              {m.price_per_1k_input > 0 && <span>${m.price_per_1k_input.toFixed(5)}/1k in</span>}
+            <div className="mt-3 flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-gray-500">
+              {m.context_length > 0 && (
+                <span title="Input context window">{(m.context_length / 1000).toFixed(0)}k ctx</span>
+              )}
+              {m.max_output_tokens > 0 && (
+                <span title="Max output tokens">
+                  {m.max_output_tokens >= 1000
+                    ? `${(m.max_output_tokens / 1000).toFixed(0)}k out`
+                    : `${m.max_output_tokens} out`}
+                </span>
+              )}
+              {m.price_per_1k_input > 0 && (
+                <span title="Input price per 1k tokens" className="text-emerald-500">
+                  ${m.price_per_1k_input.toFixed(6)}<span className="text-gray-600">/1k in</span>
+                </span>
+              )}
+              {m.price_per_1k_output > 0 && (
+                <span title="Output price per 1k tokens" className="text-orange-400">
+                  ${m.price_per_1k_output.toFixed(6)}<span className="text-gray-600">/1k out</span>
+                </span>
+              )}
+              {m.price_per_1k_cache_read > 0 && (
+                <span title="Cached input price per 1k tokens" className="text-violet-400">
+                  ${m.price_per_1k_cache_read.toFixed(6)}<span className="text-gray-600">/1k cached</span>
+                </span>
+              )}
             </div>
             {m.tags?.length > 0 && (
               <div className="mt-2 flex flex-wrap gap-1">
@@ -138,9 +167,19 @@ print(response.choices[0].message.content)`;
               </div>
             )}
 
+            <div className="mt-3 pt-2 border-t border-gray-800 flex items-center justify-between">
+              <Link
+                href={`/playground?model=${encodeURIComponent(m.id)}`}
+                onClick={(e) => e.stopPropagation()}
+                className="text-xs text-violet-400 hover:text-violet-300 transition-colors"
+              >
+                Try in Playground →
+              </Link>
+            </div>
+
             {selected?.id === m.id && (
               <div className="mt-3 pt-3 border-t border-gray-800">
-                <div className="text-xs text-gray-500 mb-1.5">Python</div>
+                <div className="text-xs text-gray-500 mb-1.5">Python · demo endpoint</div>
                 <pre className="bg-gray-950 rounded-lg p-3 text-xs text-gray-300 overflow-x-auto whitespace-pre-wrap font-mono">
                   {snippet(m)}
                 </pre>

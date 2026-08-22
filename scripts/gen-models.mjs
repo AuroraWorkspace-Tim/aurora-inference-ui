@@ -172,17 +172,21 @@ const catalog = JSON.parse(readFileSync(join(DATA_DIR, 'do-model-catalog.json'),
 // Preserve hand-crafted descriptions, manually-corrected context lengths, and
 // manually-set pricing (for models where the catalog carries null) from the
 // current models.json so a re-run does not discard prior work.
-let existingDescriptions   = new Map();
-let existingContextLengths = new Map();
-let existingInputPrices    = new Map();
-let existingOutputPrices   = new Map();
+let existingDescriptions    = new Map();
+let existingContextLengths  = new Map();
+let existingInputPrices     = new Map();
+let existingOutputPrices    = new Map();
+let existingCacheReadPrices = new Map();
+let existingMaxOutputTokens = new Map();
 try {
   const existing = JSON.parse(readFileSync(join(DATA_DIR, 'models.json'), 'utf8'));
   for (const m of existing) {
-    if (m.description)             existingDescriptions.set(m.id, m.description);
-    existingContextLengths.set(m.id, m.context_length);
-    existingInputPrices.set(m.id,  m.price_per_1k_input);
-    existingOutputPrices.set(m.id, m.price_per_1k_output);
+    if (m.description)                 existingDescriptions.set(m.id, m.description);
+    existingContextLengths.set(m.id,   m.context_length);
+    existingInputPrices.set(m.id,      m.price_per_1k_input);
+    existingOutputPrices.set(m.id,     m.price_per_1k_output);
+    existingCacheReadPrices.set(m.id,  m.price_per_1k_cache_read);
+    existingMaxOutputTokens.set(m.id,  m.max_output_tokens);
   }
 } catch {
   // First run — no existing file; that's fine.
@@ -210,15 +214,25 @@ const models = catalog.models
       m.pricing?.completion != null
         ? parseFloat(m.pricing.completion) * 1000
         : (existingOutputPrices.get(m.id)  ?? 0);
+    const priceCacheRead =
+      m.pricing?.input_cache_read != null
+        ? parseFloat(m.pricing.input_cache_read) * 1000
+        : (existingCacheReadPrices.get(m.id) ?? 0);
+    const maxOutputTokens =
+      m.max_output_tokens != null
+        ? m.max_output_tokens
+        : (existingMaxOutputTokens.get(m.id) ?? 0);
 
     return {
-      id:                 m.id,
-      name:               m.name,
+      id:                    m.id,
+      name:                  m.name,
       provider,
       modality,
-      context_length:     contextLength,
-      price_per_1k_input:  priceInput,
-      price_per_1k_output: priceOutput,
+      context_length:        contextLength,
+      max_output_tokens:     maxOutputTokens,
+      price_per_1k_input:    priceInput,
+      price_per_1k_output:   priceOutput,
+      price_per_1k_cache_read: priceCacheRead,
       description,
       tags,
     };
